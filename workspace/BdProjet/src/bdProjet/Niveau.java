@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Niveau {
-
+//Faire des arraylist
 static Scanner in = new Scanner(System.in);	
 private String name;
-private int caveDelay;
+//private int caveDelay;
 public int CaveTime;
 private int diamondsRequired;
 private int[] diamondValue;
@@ -21,7 +21,7 @@ private Rockford rockford;
 
 public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, int[] diamondValue, int amoebaTime, int magicWallTime, int largeur, int hauteur){
 	this.name=name;
-	this.caveDelay=caveDelay;
+	//this.caveDelay=caveDelay;
 	this.CaveTime=caveTime;
 	this.diamondsRequired=diamondsRequired;
 	this.diamondValue=diamondValue;
@@ -32,9 +32,24 @@ public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, in
 	carte= new char[this.largeur][this.hauteur] ;
 }
 
+
 public Niveau(){
+	this.name=" ";
+//	this.caveDelay=6;
+	this.CaveTime=0;
+	this.diamondsRequired=0;
+	this.diamondValue=new int[]{0,0};
+	this.amoebaTime=0;
+	this.magicWallTime=0;
+	this.largeur=0;
+	this.hauteur=0;
+	//carte= new char[this.largeur][this.hauteur] ;
+	//this.rockford=new Rockford();
+}
+
+/*public Niveau(){
 	this.name="Cave 1";
-	this.caveDelay=6;
+//	this.caveDelay=6;
 	this.CaveTime=150;
 	this.diamondsRequired=3;
 	this.diamondValue=new int[]{30,15};
@@ -44,20 +59,18 @@ public Niveau(){
 	this.hauteur=22;
 	carte= new char[this.largeur][this.hauteur] ;
 	this.rockford=new Rockford();
-}
+}*/
 
 public String getName() {
 	return name;
 }
-public void setName(String name) {
-	this.name = name;
-}
-public int getCaveDelay() {
+
+/*public int getCaveDelay() {
 	return caveDelay;
 }
 public void setCaveDelay(int caveDelay) {
 	this.caveDelay = caveDelay;
-}
+}*/
 public int getCaveTime() {
 	return CaveTime;
 }
@@ -119,9 +132,7 @@ public void setCarte(char[][] carte) {
 	this.carte = carte;
 }
 
-public void setCaveTime(){
-	
-}
+
 
 public void setname(String n){
 	name=n;
