@@ -97,6 +97,18 @@ public void setNbDiamant(int nbDiamant) {
 	this.nbdiamant = nbDiamant;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 public String toString(String nom){
 System.out.println ("Fin de la partie");
 if (nom!="fin"){
@@ -105,5 +117,8 @@ if (nom!="fin"){
 return("Nombre de diamant:"+nbdiamant+"Nombre de deplacement restant:"+nbdeplacement);
 
 }
+
+
+
 }
 //2,4,6,8 les déplacements

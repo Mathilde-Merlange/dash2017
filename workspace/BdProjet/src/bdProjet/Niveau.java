@@ -10,7 +10,7 @@ private String name;
 //private int caveDelay;
 public int CaveTime;
 private int diamondsRequired;
-private int[] diamondValue;
+private int diamondValue;
 private int amoebaTime;
 private int magicWallTime;
 private int largeur;
@@ -19,7 +19,7 @@ private char[][] carte;
 private Rockford rockford;
 //private int[] tabdiamondsval;
 
-public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, int[] diamondValue, int amoebaTime, int magicWallTime, int largeur, int hauteur){
+public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, int diamondValue, int amoebaTime, int magicWallTime, int largeur, int hauteur){
 	this.name=name;
 	//this.caveDelay=caveDelay;
 	this.CaveTime=caveTime;
@@ -38,7 +38,7 @@ public Niveau(){
 //	this.caveDelay=6;
 	this.CaveTime=0;
 	this.diamondsRequired=0;
-	this.diamondValue=new int[]{0,0};
+	this.diamondValue=0;
 	this.amoebaTime=0;
 	this.magicWallTime=0;
 	this.largeur=0;
@@ -85,10 +85,10 @@ public int getDiamondsRequired() {
 public void setDiamondsRequired(int diamondsRequired) {
 	this.diamondsRequired = diamondsRequired;
 }
-public int[] getDiamondValue() {
+public int getDiamondValue() {
 	return diamondValue;
 }
-public void setDiamondValue(int[] diamondValue) {
+public void setDiamondValue(int diamondValue) {
 	this.diamondValue = diamondValue;
 }
 public int getAmoebaTime() {

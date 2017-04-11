@@ -8,7 +8,7 @@ public  class Tableau {
 public char[][] Map= new char [8][7];	
 public int x;
 public int y;
-public ArrayList depl;
+public String depl;
 
 public Tableau (){
 	/*for (int i=0; i<Map.length; i++){
@@ -30,7 +30,7 @@ public Tableau(int x,int y){
 
 public void adddepl(String d){
 	// ajoute une direction dans la liste depl
-	depl.add(d);
+	depl=d;
 }
 
 //les voisins où l'on peut se déplacer
@@ -185,15 +185,58 @@ public static void evolue(Niveau n) throws IOException{
 	
 }
 
+public static char cible_al(Tableau Map){
+	//A modifier pour j
+	int c=0;
+	char a=' ';
+	for (int i=0; i<Map.Map.length; i++){
+	for (int j=0;j<Map.Map.length;j++){
+		c=c+1;
+		Random r= new Random();
+		int elt=Map.Map.length*Map.Map.length;//ts les elt du tableau
+		int de=r.nextInt(elt);
+		if (c==elt){
+			a=Map.Map[i][j];
+		}
+		
+	}
+	}
+	return a;
+}
+
+public static void directif(Rockford rockford, Tableau Map){
+Tableau depart= Map;
+ArrayList chemin=new ArrayList();
+Tableau suiv=depart;
+while (rockford.time!=0){
+	chemin.add(depart.depl);;
+    char cible=cible_al(Map);
+    suiv=rockford.pluscourtchemin(cible,Map,suiv);
+    char contenusuiv=rockford.contenusuiv(suiv.x,suiv.y);
+    while (contenusuiv!=cible){
+    	
+    }
+    
+    
+    
+    
+}
+	
+	
+	
+}
+
+
 public static void simplet(Rockford rockford, Tableau Map){
 	//strategie du simplet	
 		String nom="";
 		Tableau depart=Map;
-		Tableau chemin=depart;
+		ArrayList chemin=new ArrayList();
 		Tableau suiv=depart;
 		//chemin doit memoriser tout le chemin
+		
 		while (rockford.time!=0){
-		chemin=depart;
+		chemin.add(depart.depl);; //prend tous les déplacements
 		suiv=rockford.prochaindeplacementA(suiv, depart.x, depart.y);
 		char contenusuiv=rockford.contenusuiv(suiv.x,suiv.y);
 		
@@ -251,6 +294,7 @@ public static void simplet(Rockford rockford, Tableau Map){
 		
 		}
 		rockford.toString(nom);
+		
 		}
 
 
@@ -285,4 +329,8 @@ public static void tomberRoc(Tableau Map){
 }
 	 
 }
+
+//creer une methode qui permt d'afficher depl de Rockford avec chemin
+
+
 }
