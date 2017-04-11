@@ -3,11 +3,12 @@ package dash;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static dash.ia.randompath;
+
 /**
  * Created by mathilde on 07/03/17.
  */
 public class Plateau {
-
 
 
     static Scanner in = new Scanner(System.in);
@@ -30,67 +31,72 @@ public class Plateau {
 
         int x = 3, y = 3;
         grille[x][y] = '/'; //placement du personnage
+        grille[1][2] = 'c';
         grille[4][4] = 'd';
         // ↑ ↑ ↓ ↓ ← → ← → B A//
         grille[5][5] = 'o';//sortie
         afficher(grille, taille);
 
-        ArrayList moves = new ArrayList();
-        int[] shift = {6,2,6,2};
+        ArrayList moves = new ArrayList();//liste déplacements pour enregistrement
+        char[] shift = randompath(8);
         int lg = shift.length - 1;
 
 
         while (grille[x][y] != grille[5][5] && lg > 0) {
             for (int i = 0; i < shift.length; i++) {
-                int deplacement = shift[i];
+                char deplacement = shift[i];
                 moves.add(deplacement);
 
 
                 switch (deplacement) {  //2,4,5,6,8 : bas,gauche,immobile,droite,haut D,L,I,R,U
-                    case 2:
+                    case 'D':
                         if (grille[x + 1][y] == 'W') {
                             grille[x][y] = '/';
                             System.out.println("mur bas");
-                            break;}
-                        else {
+                            break;
+                        } else {
                             grille[x + 1][y] = '/';
                             grille[x][y] = '.';
                             x++;
-                            break;}
-                    case 4:
+                            break;
+                        }
+                    case 'L':
                         if (grille[x][y - 1] == 'W') {
                             grille[x][y] = '/';
                             System.out.println("mur gauche");
-                            break;}
-                        else {
+                            break;
+                        } else {
                             grille[x][y - 1] = '/';
                             grille[x][y] = '.';
                             y--;
-                            break;}
-                    case 5:
+                            break;
+                        }
+                    case 'I':
 
                         grille[x][y] = '/';
                         break;
-                    case 6:
+                    case 'R':
                         if (grille[x][y + 1] == 'W') {
                             grille[x][y] = '/';
                             System.out.println("mur droite");
-                            break;}
-                        else {
+                            break;
+                        } else {
                             grille[x][y + 1] = '/';
                             grille[x][y] = '.';
                             y++;
-                            break;}
-                    case 8:
+                            break;
+                        }
+                    case 'U':
                         if (grille[x - 1][y] == 'W') {
                             grille[x][y] = '/';
                             System.out.println("mur haut");
-                            break;}
-                        else {
+                            break;
+                        } else {
                             grille[x - 1][y] = '/';
                             grille[x][y] = '.';
                             x--;
-                            break;}
+                            break;
+                        }
                     default:
                         grille[x][y] = '/';
                         break; // default pour autres touches
@@ -107,18 +113,18 @@ public class Plateau {
 
         }
         for (int ct = 0; ct < moves.size(); ct++) {
-            System.out.print(moves.get(ct) +" ");}
+            System.out.print(moves.get(ct) + " ");
+        }
 
     }//end main
 
 
-
-    public static void afficher (char [][]grille, int taille){
-        int a=0;
-        while(a<taille){
-            int b=0;
-            while(b<taille){
-                System.out.print(grille[a][b]+" ");
+    public static void afficher(char[][] grille, int taille) {
+        int a = 0;
+        while (a < taille) {
+            int b = 0;
+            while (b < taille) {
+                System.out.print(grille[a][b] + " ");
                 b++;
             }
             System.out.println("");
@@ -130,9 +136,6 @@ public class Plateau {
 }
 
 
-
-
 // not to do :
 //diamants
 //enregistrement positions
-//conv chiffres lettres

@@ -7,10 +7,9 @@ import java.util.ArrayList;
  */
 public class Moves {
 
-    public static void afficherM(ArrayList moves) {//ArrayList char MAJUSCULES
-        for (int ct = 0; ct < moves.size(); ct++) {
-            char e1 = (char) moves.get(ct);
-            switch (e1) {
+    public static void afficherM(ArrayList<Character> moves) {//Affichage déplacements
+        for (char m : moves) {
+            switch (m) {
                 case 'D':
                     System.out.println("bas");
                     break;
@@ -34,7 +33,7 @@ public class Moves {
     }
 
     public static void main(String[] args) {
-        ArrayList moves = new ArrayList();
+        ArrayList<Character> moves = new ArrayList();
         moves.add('U');
         moves.add('L');
         moves.add('D');
