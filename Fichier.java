@@ -54,22 +54,26 @@ public class Fichier {
 		Scanner sc = new Scanner(file);
 		// FileReader a= new FileReader(file);
 		String ligne = "";
+		String ligne2 = "";
 		String mot = "";
 		Niveau n = new Niveau();
 		Rockford rockford = new Rockford();
 		// StringTokenizer st = new StringTokenizer(ligne,"=",false);
 		// Scanner sl=new Scanner(ligne);
 		ligne = sc.nextLine();
-		sc2.nextLine();
+		ligne2=sc2.nextLine();
 		// mot=de.next();
-
+int v=0;
 		try {
 			while (sc.hasNextLine()) {
+				v++;
+				System.out.println("while"+v);
 				ligne = sc.nextLine();
 				sc2.nextLine();
-				while (!sc.nextLine().equals("[map]")
-						&& !sc2.nextLine().equals("[map]")) {
-					sc.nextLine();
+				while (!ligne.equals("[map]")
+						&& !ligne2.equals("[map]")) {
+
+					System.out.println("whiled"+sc.nextLine());
 					sc2.nextLine();
 				}
 				char[][] map = Fichier.lirecarte(sc, sc2);
