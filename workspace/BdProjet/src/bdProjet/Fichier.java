@@ -34,7 +34,9 @@ public class Fichier {
 }
 
 	public static void lirefichier(String nomfichier) throws FileNotFoundException{
-	
+		int v1=0;
+		int v2=0;
+		ArrayList <Niveau> niv= new ArrayList ();
 		File file=new File(nomfichier);
 		Scanner sc1= new Scanner (file); 
 		Scanner sc2= new Scanner (file); 
@@ -69,8 +71,8 @@ public class Fichier {
 				sc1.nextLine();
 				sc2.nextLine();
 			}
-			char [][] map =Fichier.lirecarte(sc1,sc2);*/
-			System.out.println(sc.nextLine());
+			char [][] map =Fichier.lirecarte(sc1,sc2);
+				*/	
 			
 			
 			
@@ -118,9 +120,16 @@ public class Fichier {
 							//a deux val min il faut les additionner et les ajouter
 								//de.next();
 								//de.next();
-								//Scanner st2= new Scanner (ligne).useDelimiter(" ");
+								Scanner st2= new Scanner (ligne).useDelimiter("=");
 								//StringTokenizer st2 = new StringTokenizer(ligne," ",false);
-								//n.setDiamondValue(Integer.parseInt(st2.nextToken()));
+								System.out.println(st2.next());
+								ligne=st2.next();
+								Scanner  st3= new Scanner (ligne).useDelimiter(" ");
+								System.out.println(ligne);
+								v1=Integer.parseInt(st3.next());
+								v2=Integer.parseInt(st3.next());
+							n.setDiamondValue(v1+v2);
+							System.out.println(v1+v2);
 								//n.ajouterDiamondValue(Integer.parseInt(st2.nextToken()));
 								//test
 								
@@ -128,7 +137,7 @@ public class Fichier {
 							}
 							
 							if (mot.equals("AmoebaTime")){
-								
+								//System.out.println ("test");
 								n.setAmoebaTime(Integer.parseInt(de.next()));
 								}
 							if (mot.equals("MagicWallTime")){
@@ -142,14 +151,14 @@ public class Fichier {
 						//System.out.println(ligne+"aa");
 						//mot=de.next();
 						de.close();
+						
 					}	
-					
+					niv.add(n);
+				//System.out.print("ok");
 				}
 				
 			}
-				//ligne=ligne.trim();
 				
-				//}
 			
 			
 			
