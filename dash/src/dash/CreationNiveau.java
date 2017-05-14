@@ -5,8 +5,8 @@ package dash;
  * Created by mathilde on 12/02/17.
  */
 
-        import java.io.*;
-        import java.util.Scanner;
+import java.io.*;
+import java.util.Scanner;
 
 public class CreationNiveau {
 
@@ -15,6 +15,7 @@ public class CreationNiveau {
     public static void main(String[] args) {
         System.out.println("Saisir le nombre de niveaux à créer");
         int n = sc.nextInt();
+        // ↑ ↑ ↓ ↓ ← → ← → B A//
         String name = "/home/mathilde/Desktop/tryme";
         File f = new File(name);
         try {
