@@ -50,13 +50,19 @@ return voisin;
 
 
 public static void main(String[]args) throws Exception{
+	int z=0;
+	Niveau niveau=new Niveau ();
+	ArrayList <Niveau> niv= new ArrayList ();
 	Rockford rockford = new Rockford();
 	Scanner s=new Scanner (System.in);
 	System.out.println("Entrer le nom du fichier à lire");
 	String nom=s.next();
 	File f= new File(nom);
 	
-	Fichier.lirefichier(nom);
+	niv=Fichier.lirefichier(nom);
+
+	
+	
 	//lit le fichier
 	
 	/*Scanner sc= new Scanner(f);
@@ -86,7 +92,21 @@ public static void main(String[]args) throws Exception{
 	int a=s.nextInt();
 	switch(a){
 	case 1:
-		tab.simplet(rockford,tab2);
+		
+		while (z!=niv.size()){
+			niveau=niv.get(z);
+			rockford.setTime (niveau.getCaveTime());
+			tab.simplet(rockford,tab2,niveau);
+		
+		z=z+1;
+		System.out.println("Continuer ? 0=Non 1=Oui");
+		int b=s.nextInt();
+		if(b==0){
+			z=niv.size();
+		}
+		
+		}
+		
 		
 		break;
 	case 2:break;

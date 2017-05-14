@@ -81,6 +81,8 @@ public int getDiamondsRequired() {
 	return diamondsRequired;
 }
 
+	
+
 
 public void setDiamondsRequired(int diamondsRequired) {
 	this.diamondsRequired = diamondsRequired;

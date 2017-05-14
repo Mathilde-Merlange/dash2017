@@ -211,7 +211,7 @@ Tableau suiv=depart;
 while (rockford.time!=0){
 	chemin.add(depart.depl);;
     char cible=cible_al(Map);
-    suiv=rockford.pluscourtchemin(cible,Map,suiv);
+   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
     char contenusuiv=rockford.contenusuiv(suiv.x,suiv.y);
     while (contenusuiv!=cible){
     	
@@ -227,8 +227,9 @@ while (rockford.time!=0){
 }
 
 
-public static void simplet(Rockford rockford, Tableau Map){
+public static void simplet(Rockford rockford, Tableau Map,Niveau niv){
 	//strategie du simplet	
+		
 		String nom="";
 		Tableau depart=Map;
 		ArrayList chemin=new ArrayList();
