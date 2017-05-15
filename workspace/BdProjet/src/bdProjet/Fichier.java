@@ -2,6 +2,7 @@ package bdProjet;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Fichier {
@@ -33,7 +34,7 @@ public class Fichier {
 		out.close();
 }
 
-	public static void lirefichier(String nomfichier) throws FileNotFoundException{
+	public static ArrayList lirefichier(String nomfichier) throws FileNotFoundException{
 		int v1=0;
 		int v2=0;
 		ArrayList <Niveau> niv= new ArrayList ();
@@ -44,6 +45,7 @@ public class Fichier {
 		Scanner sc=new Scanner(file);
 		//FileReader a= new FileReader(file);
 		String ligne="";
+		
 		String mot="";
 		Niveau n= new Niveau();
 		Rockford rockford= new Rockford();
@@ -62,20 +64,7 @@ public class Fichier {
 					ligne=sc.nextLine();
 					System.out.println(ligne);
 				}*/
-			
-			/*sc1= new Scanner(ligne);
-			 sc2= new Scanner (ligne);
-			 System.out.println(ligne);
-			while(!sc1.nextLine().equals("[map]")&&!sc2.nextLine().equals("[map]")){
-				System.out.println ("Adelieeeeee");
-				sc1.nextLine();
-				sc2.nextLine();
-			}
-			char [][] map =Fichier.lirecarte(sc1,sc2);
-				*/	
-			
-			
-			
+				
 				if (ligne.equals("[cave]")){
 					//while (st.hasMoreTokens()){
 					//mot=st.nextToken();
@@ -106,7 +95,7 @@ public class Fichier {
 								//System.out.println("ok?");
 								String d=de.next();
 								int dep= Integer.parseInt(d);
-								rockford.setTime(dep);
+								rockford.setTime(dep);// A changer pour qu'il prenne le bon time
 								n.setCaveTime(dep);
 							}
 							
@@ -153,86 +142,131 @@ public class Fichier {
 						de.close();
 						
 					}	
+					
+				if(ligne.equals("[map]")){
+					String ligne1 = sc1.nextLine();
+					String ligne2 = sc2.nextLine();
+				
+					while (!ligne1.equals(ligne) && !ligne2.equals(ligne)) {
+							//System.out.println("testmmmm");
+							if(!ligne1.equals(ligne)){
+							 ligne1=sc1.nextLine();
+							 //System.out.println("true");
+							 }
+							if(!ligne2.equals(ligne)){
+								//System.out.println("true2");
+								ligne2=sc2.nextLine();
+							}
+					
+						}
+				
+						
+				
+									
+						if(ligne1.equals(ligne) && ligne2.equals(ligne)){
+							System.out.println("t b");
+						char[][] map = Fichier.lirecarte(sc1, sc2);//l'erreur vient ici
+						System.out.println("t b");
+						
+										
+				
+						for (int i = 0; i < map.length; i++) {
+							for (int j = 0; j < map[0].length; j++) {
+								System.out.print(map[i][j]);
+							}
+							System.out.println();
+							}
+						
+				
+						}else{
+							System.out.println("ERROR");
+						}
+						
+				}
+								
+					
 					niv.add(n);
 				//System.out.print("ok");
 				}
 				
+				
 			}
 				
-			
-			
-			
-			
-			
+				
 					
 		}catch(Exception ex){ 
 			ex.getMessage();//catch
 		}
+		return niv;
 		
 		}
 	
 	
 	
 	
-//$ commence les lignes optionnelles
-public static char[][] lirecarte(Scanner sc,Scanner sc2) throws Exception{
-	int cpl=0;
-	int cph=0;
-	String ligne2=sc2.nextLine();
-	String ligne=sc.nextLine();
 	
-	
-	
-	/*while(sc2.hasNextLine()){
-		ligne2=sc2.nextLine();
-		System.out.println(ligne2+"tttttttt");
-	}*/
-	char[][]map;
-	/*char[][] map=new char [5][40];
-	for(int i=0;i<5;i++){
-		//System.out.println("aaaa"+ligne+"bbbb");
-		for(int j=0;j<ligne2.length();j++){
-			map[i][j]=ligne2.charAt(j);
-		}
-		ligne2=sc2.nextLine();
-		System.out.println(ligne);
-		ligne=sc.nextLine();
+	// $ commence les lignes optionnelles
 		
-	}*/
-	//if(ligne.equals("[map]")){
-		System.out.print("test");
-		//ligne=sc.nextLine();
-		cpl=ligne.length();
-	while (!ligne.equals("[/map]")&& sc.hasNextLine()){
-		
-		//System.out.print(sc.nextLine());
-		ligne=sc.nextLine();
-		cph++;
+	
+	public static char[][] lirecarte(Scanner sc1, Scanner sc2) throws Exception {
+			int cpl = 0;
+			int cph = 0;
+			String ligne2 = sc2.nextLine();
+			String ligne1 = sc1.nextLine();
+			char[] tab={'R',' ','.','r','d','w','W','P','X'};
+	List lettre= new ArrayList();
+	for(int i=0;i<tab.length;i++){
+	lettre.add(tab[i]);
 	}
-	System.out.println("cph"+cph+" cpl"+cpl);
-	map= new char[cph][cpl];	
 		
-		ligne2=sc2.nextLine();
+			
+		char[][] map;
 		
-		//System.out.print("lllllllllll"+ligne2+"l2l2l2l2");
-		for(int i=0;i<cph;i++){
-			for(int j=0;j<cpl;j++){
-				map[i][j]=ligne2.charAt(j);	
+	
+			// if(ligne.equals("[map]")){
+			
+			// ligne=sc.nextLine();
+			cpl = ligne1.length(); //colonne ok
+			System.out.println(cpl);
+						
+			 while (!ligne1.equals("[/map]")) {
+				ligne1 = sc1.nextLine();
+				cph++;
 			}
-			//System.out.println("ccc"+ligne2);
-			ligne2=sc2.nextLine();
+			 System.out.println(cph);//ligne ok
+			
+			System.out.println("1cph" + cph + " cpl" + cpl);
+			map = new char[cph][cpl];
+
+			//ligne2 = sc2.nextLine();
+			// System.out.print("lllllllllll"+ligne2+"l2l2l2l2");
+			//RAJOUTE LETTRE A LA CARTE ET D SI LETTRE INCONNUE.
+			for (int i = 0; i < cph; i++) {
+				for (int j = 0; j < cpl; j++) {
+					if(lettre.contains(ligne2.charAt(j))){
+					map[i][j] = ligne2.charAt(j);
+					}
+					else{
+						map[i][j] ='d';
+						
+					}
+				}
+				// System.out.println("ccc"+ligne2);
+				ligne2 = sc2.nextLine();
+			
+			}
+			
+			// Scanner sc1=new Scanner(ligne);
+			
+
+			// return map;
+			// }
+			System.out.println("cph" + cph + " cpl" + cpl);
+			
+			
+			return map;
 		}
-			//System.out.println("ddd"+ligne);
-			//Scanner sc1=new Scanner(ligne);
-			/*if(sc2.hasNextLine()){
-				//System.out.print("test2");
-			//ligne=sc2.next();
-			System.out.println(ligne+"bbbb");}*/
-		
-		//return map;
-	//}
-	return map;
-}
+
 
 	
 	
