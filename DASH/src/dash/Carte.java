@@ -6,7 +6,8 @@ import java.util.*;
 import dash1.Niveau1;
 
 public class Carte {
-	static final int nbtab = 5;
+	public static final int nbtab = 5;
+	public static final int infini = 1000;
 
 	// les voisins où l'on peut se déplacer
 	public static List<int[]> voisins(char[][] grille, int[] pos) {
@@ -110,6 +111,8 @@ public class Carte {
 				vois = lesVois.get(suiv);
 				chemin.add(vois[2]);
 				if(grille[vois[0]][vois[1]] =='x'||grille[vois[0]][vois[1]] =='X'){
+					grille[depart[0]][depart[1]] = ' ';
+					grille[vois[0]][vois[1]] = 'R';
 					return true;
 				}else{
 				grille[depart[0]][depart[1]] = ' ';
@@ -237,10 +240,10 @@ public class Carte {
 		int c = 0;
 		char a = ' ';
 		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map.length; j++) {
+			for (int j = 0; j < map[0].length; j++) {
 				c = c + 1;
 				Random r = new Random();
-				int elt = map.length * map.length;// ts les elt du tableau
+				int elt = map.length * map[0].length;// ts les elt du tableau
 				int de = r.nextInt(elt);
 				if (c == elt) {
 					a = map[i][j];
@@ -292,6 +295,68 @@ public class Carte {
 		}
 	}
 
+	public void init(char[][] grille,int[] depart){
+		Poidsatt [][]map1=null;
+		Coupleint[][]pere=null;
+		for (int k = 0; k < grille.length; k++) {
+			for (int j = 0; j < grille[0].length; j++) {
+				map1[k][j]=new Poidsatt(-1,false);
+				pere[k][j]=new Coupleint(-1,-1);
+			}
+		}
+		map1[depart[0]][depart[1]]=new Poidsatt(0,false);
+	}
+	
+	public void dijkstra(char[][] grille,int[] depart){
+		//init
+		Poidsatt [][]map1=null;
+		Coupleint[][]pere=null;
+		for (int k = 0; k < grille.length; k++) {
+			for (int j = 0; j < grille[0].length; j++) {
+				map1[k][j]=new Poidsatt(-1,false);
+				pere[k][j]=new Coupleint(-1,-1);
+			}
+		}
+		map1[depart[0]][depart[1]]=new Poidsatt(0,false);
+		//fin init
+		//f liste des cases
+
+		List<int[]>x=null;
+		List<int[]>f=null;
+		for (int k = 0; k < grille.length; k++) {
+			for (int j = 0; j < grille[0].length; j++) {
+				f.add(new int[]{k,j});
+			}
+		}
+		//
+		while (!f.isEmpty()){
+			int[]u=extrairemin(f,map1);
+			f.remove(u);
+			x.add(u);
+			for(int []v:voisins(grille,u)){
+				//relacher, si le voisin pas atteint et poids fils > poids pere +1
+				if((!map1[v[0]][v[1]].isAtteint()) && (map1[v[0]][v[1]].getPoids()>map1[u[0]][u[1]].getPoids()+1)){
+					map1[v[0]][v[1]].setPoids(map1[u[0]][u[1]].getPoids()+1);
+					pere[v[0]][v[1]]=new Coupleint(u[0],u[1]);
+				}//
+			}
+		}
+		
+	}
+	
+	//return case non atteinte de plus petit poids passe à atteint
+	public int[] extrairemin(List<int[]>f,Poidsatt [][]map1){
+		int[]min=f.get(0);
+		for(int[]a:f){
+			if((!map1[a[0]][a[1]].isAtteint())&&map1[a[0]][a[1]].getPoids()<map1[min[0]][min[1]].getPoids()){
+				min=a;
+			}
+		}
+		map1[min[0]][min[1]].setAtteint(true);
+		return min;
+	}
+	
+	 
 	/*
 	 * public static void evolue2(Niveau n) throws IOException{
 	 * char[][]grille=n.getCarte(); int[]depart=depart(n);
