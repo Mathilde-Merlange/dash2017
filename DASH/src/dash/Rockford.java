@@ -3,11 +3,11 @@ package dash;
 import java.util.Random;
 
 public class Rockford {
-	public int nbdeplacement;
-	public int[] listediamant;;
-	public int nbdiamant;
-	public int time;
-	public Tableau tab1;
+	private int nbdeplacement;
+	private int[] listediamant;;
+	private int nbdiamant;
+	private int time;
+	private Tableau tab1;
 
 	// public Tableau tab1;
 
@@ -22,6 +22,22 @@ public class Rockford {
 	public void setTime(int x) {
 		// modifier Time
 		time = x;
+	}
+
+	public int getNbdiamant() {
+		return nbdiamant;
+	}
+
+	public void setNbdiamant(int nbdiamant) {
+		this.nbdiamant = nbdiamant;
+	}
+
+	public int getNbdeplacement() {
+		return nbdeplacement;
+	}
+
+	public int getTime() {
+		return time;
 	}
 
 	public void adddiamant() {

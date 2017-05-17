@@ -206,7 +206,7 @@ public class Tableau {
 		Tableau depart= Map;
 		ArrayList chemin=new ArrayList();
 		Tableau suiv=depart;
-		while (rockford.time!=0){
+		while (rockford.getTime()!=0){
 			chemin.add(depart.depl);;
 		    char cible=cible_al(Map);
 		   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
@@ -279,7 +279,7 @@ public class Tableau {
 		Tableau suiv = depart;
 		// chemin doit memoriser tout le chemin
 
-		while (rockford.time != 0) {
+		while (rockford.getTime() != 0) {
 			chemin.add(depart.depl);
 			; // prend tous les déplacements
 			suiv = rockford.prochaindeplacementA(suiv, depart.x, depart.y);
