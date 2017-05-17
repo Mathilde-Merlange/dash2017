@@ -1,4 +1,7 @@
 package bdProjet;
+
+
+
 import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +11,11 @@ import java.util.StringTokenizer;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
+
+import bdProjet.Carte;
+import bdProjet.Fichier;
+import bdProjet.Niveau;
+
 public class Test {
 	
 //private Diamant d;
@@ -63,6 +71,7 @@ public static ArrayList<Niveau> trierniv(ArrayList<Niveau> niv){
 
 public static void main(String[]args) throws Exception{
 	int z=0;
+	char[][] map =null;
 	Niveau niveau=new Niveau ();
 	ArrayList <Niveau> niv2=new ArrayList ();
 	ArrayList <Niveau> niv= new ArrayList ();
@@ -73,7 +82,7 @@ public static void main(String[]args) throws Exception{
 	File f= new File(nom);
 	
 	niv=Fichier.lirefichier(nom);
-
+	
 	
 	
 	//lit le fichier
@@ -134,8 +143,45 @@ public static void main(String[]args) throws Exception{
 		}
 	
 	
-	case 2:break;
-	case 3:break;
+	case 2:
+		niveau = niv.get(z);
+
+		map = niveau.getCarte();
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[0].length; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+
+		// niveau.setCarte(map);
+		// char[][] grille = niveau.getCarte();
+		System.out.println(Carte.depart(map)[0] + " "
+				+ Carte.depart(map)[1]);
+		System.out.println(Carte.sortie(niveau,map)[0] + " "
+				+ Carte.sortie(niveau,map)[1]);
+		ArrayList moves = new ArrayList();
+		int[] c = { 2, 5, 3, 6, 4, 8, 2, 4, 6, 6, 8 };
+		for (int i = 0; i < c.length; i++) {
+			moves.add(c[i]);
+		}
+		// Carte.evolue(niv);
+		bdProjet.Carte.evolue(niveau);
+		Fichier.enregistrer("test", moves);
+		break;
+	case 3:
+		niveau = niv.get(3);
+		
+					map = niveau.getCarte();
+					for (int i = 0; i < map.length; i++) {
+						for (int j = 0; j < map[0].length; j++) {
+							System.out.print(map[i][j]);
+						}
+						System.out.println();
+					}
+		
+					
+					bdProjet.Carte.directif(niveau);break;
 	case 4:break;
 	case 5:break;
 	//String str=s.next();

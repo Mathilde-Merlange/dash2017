@@ -192,45 +192,45 @@ public static void evolue(Niveau n) throws IOException{
 }
 
 public static char cible_al(Tableau Map){
-	//A modifier pour j
-	int c=0;
-	char a=' ';
-	for (int i=0; i<Map.Map.length; i++){
-	for (int j=0;j<Map.Map.length;j++){
-		c=c+1;
-		Random r= new Random();
-		int elt=Map.Map.length*Map.Map.length;//ts les elt du tableau
-		int de=r.nextInt(elt);
-		if (c==elt){
-			a=Map.Map[i][j];
+		//A modifier pour j
+		int c=0;
+		char a=' ';
+		for (int i=0; i<Map.Map.length; i++){
+		for (int j=0;j<Map.Map.length;j++){
+			c=c+1;
+			Random r= new Random();
+			int elt=Map.Map.length*Map.Map.length;//ts les elt du tableau
+			int de=r.nextInt(elt);
+			if (c==elt){
+				a=Map.Map[i][j];
+ 			}
+			
 		}
-		
-	}
-	}
-	return a;
-}
+ 		}
+ 		return a;
+ 	}
 
 public static void directif(Rockford rockford, Tableau Map){
-Tableau depart= Map;
-ArrayList chemin=new ArrayList();
-Tableau suiv=depart;
-while (rockford.time!=0){
-	chemin.add(depart.depl);;
-    char cible=cible_al(Map);
-   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
-    char contenusuiv=rockford.contenusuiv(suiv,suiv.x,suiv.y);
-    while (contenusuiv!=cible){
-    	
-    }
-    
-    
-    
-    
-}
-	
-	
-	
-}
+		Tableau depart= Map;
+		ArrayList chemin=new ArrayList();
+		Tableau suiv=depart;
+		while (rockford.time!=0){
+			chemin.add(depart.depl);;
+		    char cible=cible_al(Map);
+		   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
+		    char contenusuiv=rockford.contenusuiv(suiv,suiv.x,suiv.y);
+		    while (contenusuiv!=cible){
+		    	
+		    }
+		    
+		    
+		    
+		    
+		}
+			
+			
+			
+		}
 
 public static Tableau debuttab(Tableau tab){
 	
