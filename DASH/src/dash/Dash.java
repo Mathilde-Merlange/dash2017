@@ -49,7 +49,7 @@ public class Dash {
 		int x = dep[0];
 		int y = dep[1];
 		List<int[]> chemin = new ArrayList();
-
+		System.out.println("cavetime"+niv.getCaveTime());
 		while (niv.getCaveTime() > niv.getRockford().getNbdeplacement()
 				&& !gagne && !fini) {
 			dep = Carte.depart(grille);
@@ -67,7 +67,7 @@ public class Dash {
 			case 8:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
-					if (grille[x - 1][y] != 'X') {
+					if (grille[x - 1][y] == 'X') {
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
 						int[] tabv = { x - 1, y, 8 };
@@ -109,7 +109,7 @@ public class Dash {
 			case 2:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
-					if (grille[x + 1][y] != 'X') {
+					if (grille[x + 1][y] == 'X') {
 						grille[x][y] = ' ';
 						grille[x + 1][y] = 'R';
 						int[] tabv = { x + 1, y, 2 };
@@ -151,7 +151,7 @@ public class Dash {
 			case 6:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
-					if (grille[x][y + 1] != 'X') {
+					if (grille[x][y + 1] == 'X') {
 						grille[x][y] = ' ';
 						grille[x][y + 1] = 'R';
 						int[] tabv = { x, y + 1, 6 };
@@ -193,7 +193,7 @@ public class Dash {
 			case 4:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
-					if (grille[x][y - 1] != 'X') {
+					if (grille[x][y - 1] == 'X') {
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
 						int[] tabv = { x, y - 1, 4 };
@@ -237,6 +237,9 @@ public class Dash {
 			}
 
 		}
+		aff(grille, niv);
+		System.out.println("gagne"+gagne);
+		System.out.println("fini"+fini);
 
 	}
 
@@ -409,7 +412,7 @@ public class Dash {
 
 			break;
 		case 4:
-			jouer(niv.get(3));
+			jouer(niv.get(4));
 			break;
 		case 5:
 			break;
