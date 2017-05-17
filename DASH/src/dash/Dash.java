@@ -110,7 +110,7 @@ public class Dash {
 		System.out.println("Entrer le nom du fichier à lire");
 		String nom = s.next();
 		File f = new File(nom);
-
+		char[][] map =null;
 		niv = dash.Fichier.lirefichier("BD01plus.bd");
 
 		System.out.println("Strategie:");
@@ -143,8 +143,8 @@ public class Dash {
 		case 2:
 
 			niveau = niv.get(z);
-			
-			char[][] map = niveau.getCarte();
+
+			map = niveau.getCarte();
 			for (int i = 0; i < map.length; i++) {
 				for (int j = 0; j < map[0].length; j++) {
 					System.out.print(map[i][j]);
@@ -152,12 +152,12 @@ public class Dash {
 				System.out.println();
 			}
 
-			niveau.setCarte(map);
-			char[][] grille = niveau.getCarte();
-			System.out.println(Carte.depart(grille)[0] + " "
-					+ Carte.depart(grille)[1]);
-			System.out.println(Carte.sortie(grille)[0] + " "
-					+ Carte.sortie(grille)[1]);
+			// niveau.setCarte(map);
+			// char[][] grille = niveau.getCarte();
+			System.out.println(Carte.depart(map)[0] + " "
+					+ Carte.depart(map)[1]);
+			System.out.println(Carte.sortie(map)[0] + " "
+					+ Carte.sortie(map)[1]);
 			ArrayList moves = new ArrayList();
 			int[] c = { 2, 5, 3, 6, 4, 8, 2, 4, 6, 6, 8 };
 			for (int i = 0; i < c.length; i++) {
@@ -168,6 +168,19 @@ public class Dash {
 			Fichier.enregistrer("test", moves);
 			break;
 		case 3:
+			niveau = niv.get(3);
+
+			map = niveau.getCarte();
+			for (int i = 0; i < map.length; i++) {
+				for (int j = 0; j < map[0].length; j++) {
+					System.out.print(map[i][j]);
+				}
+				System.out.println();
+			}
+
+			
+			dash.Carte.directif(niveau);
+
 			break;
 		case 4:
 			break;

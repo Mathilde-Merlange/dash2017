@@ -60,7 +60,7 @@ public class Fichier {
 		// FileReader a= new FileReader(file);
 		String ligne = "";
 		String mot = "";
-		Niveau n = new Niveau();
+		//Niveau n = new Niveau();
 		Rockford rockford = new Rockford();
 		// StringTokenizer st = new StringTokenizer(ligne,"=",false);
 		// Scanner sl=new Scanner(ligne);
@@ -70,6 +70,7 @@ public class Fichier {
 
 		try {
 			while (sc.hasNextLine()) {
+				Niveau n = new Niveau();
 				ligne = sc.nextLine();
 				// System.out.println(ligne);
 				// StringTokenizer st = new StringTokenizer(ligne,"=",false);

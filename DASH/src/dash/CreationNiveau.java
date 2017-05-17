@@ -1,5 +1,7 @@
 package dash;
-
+/**
+ * Created by mathilde on 12/02/17.
+ */
 import java.io.*;
 import java.util.Scanner;
 
@@ -35,6 +37,7 @@ public class CreationNiveau {
 			}
 
 		} catch (Exception e) {
+            System.out.println(e);
 		}
 
 	}

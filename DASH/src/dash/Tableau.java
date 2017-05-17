@@ -183,25 +183,47 @@ public class Tableau {
 
 	}
 
-	public static char cible_al(char[][] map) {
-		// A modifier pour j
-		int c = 0;
-		char a = ' ';
-		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map.length; j++) {
-				c = c + 1;
-				Random r = new Random();
-				int elt = map.length * map.length;// ts les elt du tableau
-				int de = r.nextInt(elt);
-				if (c == elt) {
-					a = map[i][j];
-				}
-
+	public static char cible_al(Tableau Map){
+		//A modifier pour j
+		int c=0;
+		char a=' ';
+		for (int i=0; i<Map.Map.length; i++){
+		for (int j=0;j<Map.Map.length;j++){
+			c=c+1;
+			Random r= new Random();
+			int elt=Map.Map.length*Map.Map.length;//ts les elt du tableau
+			int de=r.nextInt(elt);
+			if (c==elt){
+				a=Map.Map[i][j];
 			}
+			
+		}
 		}
 		return a;
 	}
 
+	public static void directif(Rockford rockford, Tableau Map){
+		Tableau depart= Map;
+		ArrayList chemin=new ArrayList();
+		Tableau suiv=depart;
+		while (rockford.time!=0){
+			chemin.add(depart.depl);;
+		    char cible=cible_al(Map);
+		   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
+		    char contenusuiv=rockford.contenusuiv(suiv.x,suiv.y);
+		    while (contenusuiv!=cible){
+		    	
+		    }
+		    
+		    
+		    
+		    
+		}
+			
+			
+			
+		}
+	
 	public static void evolue2(Niveau n) throws IOException {
 		char[][] grille = n.getCarte();
 		int[] depart = depart(n);
