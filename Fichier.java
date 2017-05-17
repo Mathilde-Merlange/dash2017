@@ -35,6 +35,7 @@ public class Fichier {
 }
 
 	public static ArrayList lirefichier(String nomfichier) throws FileNotFoundException{
+		String nt ="";
 		int v1=0;
 		int v2=0;
 		ArrayList <Niveau> niv= new ArrayList ();
@@ -47,7 +48,7 @@ public class Fichier {
 		String ligne="";
 		
 		String mot="";
-		Niveau n= new Niveau();
+		
 		Rockford rockford= new Rockford();
 		//StringTokenizer st = new StringTokenizer(ligne,"=",false);
 		//Scanner sl=new Scanner(ligne);	
@@ -57,6 +58,7 @@ public class Fichier {
 		
 		try {
 			while(sc.hasNextLine()){
+				Niveau n= new Niveau();
 			ligne=sc.nextLine();
 			//System.out.println(ligne);
 			//StringTokenizer st = new StringTokenizer(ligne,"=",false);
@@ -74,16 +76,19 @@ public class Fichier {
 						ligne=sc.nextLine();
 						System.out.println(ligne);
 						Scanner de= new Scanner (ligne).useDelimiter("=");
+						
+						
 						while (de.hasNext()){
 							mot=de.next();
 							//mot=st.nextToken();
 							//System.out.println(mot);
-										
+							//n=new Niveau();
 						//mot=st.nextToken();
 							if (mot.equals("Name")){
 							//System.out.println("ok");
 								String ab=de.next();
 								n.setname(ab);
+								
 								//test
 								//System.out.println("ok");
 								//System.out.println(ab);
@@ -165,7 +170,8 @@ public class Fichier {
 									
 						if(ligne1.equals(ligne) && ligne2.equals(ligne)){
 							System.out.println("t b");
-						char[][] map = Fichier.lirecarte(sc1, sc2);//l'erreur vient ici
+						char[][] map = Fichier.lirecarte(sc1, sc2);
+						n.setCarte(map);
 						System.out.println("t b");
 						
 										
@@ -182,10 +188,18 @@ public class Fichier {
 							System.out.println("ERROR");
 						}
 						
-				}
-								
+						//niv.add(n);	
+						
 					
-					niv.add(n);
+						
+						
+				}
+					
+						niv.add(n);
+					
+					
+					System.out.println(niv.size());
+					
 				//System.out.print("ok");
 				}
 				
