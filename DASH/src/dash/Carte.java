@@ -286,17 +286,216 @@ public class Carte {
 		List tab = new ArrayList();
 		// croisement
 		for (int i = 0; i < lestab.size(); i++) {
-			if (tab.size() < croi && lestab.get(i).size() <= n.CaveTime) {
+			//si c gagné on le sélectionne
+			if (tab.size() < croi && evaluer(lestab.get(i),n)) {
 				tab.add(lestab.remove(i));
 			}
 		}
-		while (tab.size() < croi) {
+		/*while (tab.size() < croi) {
+			rand = (int) (Math.random() * lestab.size());
+			tab.add(lestab.remove(rand));
+		}*/
+		if(tab.isEmpty()){
 			rand = (int) (Math.random() * lestab.size());
 			tab.add(lestab.remove(rand));
 		}
 		return tab;
 	}
 
+	
+	public static boolean evaluer(List chemin, Niveau  niv){
+		boolean gagne = false;
+		boolean fini = false;
+		char[][] grille = niv.getCarte();
+		int[] dep = Carte.depart(grille);
+		int[] sor = Carte.sortie(niv, grille);
+		int x = dep[0];
+		int y = dep[1];
+		int i=0;
+		//int[]tabv=new int[3];
+		//List<int[]> chemin = new ArrayList();
+		System.out.println("cavetime"+niv.getCaveTime());
+		while (chemin.size() > i
+				&& !gagne && !fini) {
+			dep = Carte.depart(grille);
+			x = dep[0];
+			y = dep[1];
+			Dash.aff(grille, niv);
+			System.out.println("jouer:");
+			System.out.println("Taper 8 pour haut");
+			System.out.println("Taper 2 pour bas");
+			System.out.println("Taper 6 pour droite");
+			System.out.println("Taper 4 pour gauche");
+			int c = (Integer)chemin.get(i);
+			switch (c) {
+			case 5:
+			break;
+			case 8:
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					if (grille[x - 1][y] == 'X') {
+						grille[x][y] = ' ';
+						grille[x - 1][y] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+						gagne = true;
+					}
+				}
+				if (grille[x - 1][y] != 'W' && grille[x - 1][y] != 'w'
+						&& grille[x - 1][y] != 'a' && grille[x + 1][y] != 'q') {
+
+					if (grille[x - 1][y] == 'r') {
+						Tableau tab = new Tableau();
+						tab.Map = grille;
+						if(Tableau.deplacerRoc(tab, x, y)){
+							niv.getRockford().seDeplacer();
+						}
+					} else {
+						if (grille[x - 1][y] == 'd') {
+							niv.getRockford().adddiamant();
+						}
+						grille[x][y] = ' ';
+						grille[x - 1][y] = 'R';
+					niv.getRockford().seDeplacer();
+					}
+
+				} else {
+					if (grille[x - 1][y] == 'a' || grille[x + 1][y] == 'q') {
+						grille[x][y] = ' ';
+						grille[x - 1][y] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+					}
+				}
+				break;
+			case 2:
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					if (grille[x + 1][y] == 'X') {
+						grille[x][y] = ' ';
+						grille[x + 1][y] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+						gagne = true;
+					}
+				}
+				if (grille[x + 1][y] != 'W' && grille[x + 1][y] != 'w'
+						&& grille[x + 1][y] != 'a' && grille[x + 1][y] != 'q') {
+
+					if (grille[x + 1][y] == 'r') {
+						Tableau tab = new Tableau();
+						tab.Map = grille;
+						if(Tableau.deplacerRoc(tab, x+1, y)){
+							niv.getRockford().seDeplacer();
+						}
+					} else {
+						if (grille[x + 1][y] == 'd') {
+							niv.getRockford().adddiamant();
+						}
+						grille[x][y] = ' ';
+						grille[x + 1][y] = 'R';
+
+					niv.getRockford().seDeplacer();
+					}
+				} else {
+					if (grille[x + 1][y] == 'a' || grille[x + 1][y] == 'q') {
+						grille[x][y] = ' ';
+						grille[x + 1][y] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+					}
+				}
+				break;
+			case 6:
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					if (grille[x][y + 1] == 'X') {
+						grille[x][y] = ' ';
+						grille[x][y + 1] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+						gagne = true;
+					}
+				}
+				if (grille[x][y + 1] != 'W' && grille[x][y + 1] != 'w'
+						&& grille[x][y + 1] != 'a' && grille[x][y + 1] != 'q') {
+
+					if (grille[x][y + 1] == 'r') {
+						Tableau tab = new Tableau();
+						tab.Map = grille;
+						if(Tableau.deplacerRoc(tab, x, y)){
+
+							niv.getRockford().seDeplacer();
+						}
+					} else {
+						if (grille[x][y + 1] == 'd') {
+							niv.getRockford().adddiamant();
+						}
+						grille[x][y] = ' ';
+						grille[x][y + 1] = 'R';
+
+					niv.getRockford().seDeplacer();
+					}
+				} else {
+					if (grille[x][y + 1] == 'a' || grille[x][y + 1] == 'q') {
+						grille[x][y] = ' ';
+						grille[x][y + 1] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+					}
+				}
+				break;
+			case 4:
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					if (grille[x][y - 1] == 'X') {
+						grille[x][y] = ' ';
+						grille[x][y - 1] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+						gagne = true;
+					}
+				}
+				if (grille[x][y - 1] != 'W' && grille[x][y - 1] != 'w'
+						&& grille[x][y - 1] != 'a' && grille[x][y - 1] != 'q') {
+
+					if (grille[x][y - 1] == 'r') {
+						Tableau tab = new Tableau();
+						tab.Map = grille;
+						if(Tableau.deplacerRoc(tab, x, y)){
+
+							niv.getRockford().seDeplacer();
+						}
+					} else {
+						if (grille[x][y - 1] == 'd') {
+							niv.getRockford().adddiamant();
+						}
+						grille[x][y] = ' ';
+						grille[x][y - 1] = 'R';
+					niv.getRockford().seDeplacer();
+					}
+
+				} else {
+					if (grille[x][y - 1] == 'a' || grille[x][y - 1] == 'q') {
+						grille[x][y] = ' ';
+						grille[x][y - 1] = 'R';
+						niv.getRockford().seDeplacer();
+						fini = true;
+					}
+				}
+				break;
+			default:
+				System.out.println("mauvaise touche");
+			}
+i++;
+		}
+		Dash.aff(grille, niv);
+		System.out.println("gagne"+gagne);
+		System.out.println("fini"+fini);
+		if(gagne)
+			return true;
+		return false;
+	}
 
 	/**
 
@@ -324,7 +523,7 @@ public class Carte {
 		int largeur = grille[0].length;
 		List<List> lestab = new ArrayList();
 		List<int[]> lesVois = voisins(grille, depart);
-		ArrayList chemin = new ArrayList();
+		List chemin = new ArrayList();
 		// nb chemin
 		for (int l = 0; l < nbtab; l++) {
 
@@ -345,7 +544,9 @@ public class Carte {
 			}
 			// on stocke les chemins
 			lestab.add(chemin);
-			System.out.print(chemin);
+			chemin=(List) selection(lestab,n).get(0);
+			
+			System.out.print("CHEMIN"+chemin);
 		}
 		/*
 		 * while(lestab.size()>1){ lestab=selection(lestab,n);
