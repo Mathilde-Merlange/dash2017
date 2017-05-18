@@ -3,7 +3,7 @@ package bdProjet;
 import java.io.IOException;
 import java.util.*;
 
-import bdProjet.Niveau;
+//import dash1.Niveau1;
 
 public class Carte {
 	public static final int nbtab = 5;
@@ -42,21 +42,21 @@ public class Carte {
 		}
 		// voisin de droite
 		if (grille[x][y + 1] != 'W' && grille[x][y + 1] != 'w'
-				&& grille[x][y + 1] != 'a' && grille[x + 1][y] != 'q') {
+				&& grille[x][y + 1] != 'a' && grille[x][y+1] != 'q') {
 			System.out.print("droite");
 			int[] tabv = { x, y + 1, 6 };
 			vois.add(tabv);
 		}
 		// voisin du haut
 		if (grille[x - 1][y] != 'W' && grille[x - 1][y] != 'w'
-				&& grille[x - 1][y] != 'a' && grille[x + 1][y] != 'q') {
+				&& grille[x - 1][y] != 'a' && grille[x - 1][y] != 'q') {
 			System.out.print("haut");
 			int[] tabv = { x - 1, y, 8 };
 			vois.add(tabv);
 		}
 		// voisin de gauche
 		if (grille[x][y - 1] != 'W' && grille[x][y - 1] != 'w'
-				&& grille[x][y - 1] != 'a' && grille[x + 1][y] != 'q') {
+				&& grille[x][y - 1] != 'a' && grille[x ][y-1] != 'q') {
 			System.out.print("gauche");
 			int[] tabv = { x, y - 1, 4 };
 			vois.add(tabv);

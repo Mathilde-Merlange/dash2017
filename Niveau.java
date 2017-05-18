@@ -1,11 +1,30 @@
 package bdProjet;
 
 import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import bdProjet.Rockford;
 import java.util.Scanner;
 
 public class Niveau {
 //Faire des arraylist
-static Scanner in = new Scanner(System.in);	
+	static Scanner in = new Scanner(System.in);
+	private String name;
+	// private int caveDelay;
+	public int CaveTime;
+	private int diamondsRequired;
+	private int[] diamondValue;
+	private int amoebaTime;
+	private int magicWallTime;
+	private int largeur;
+	private int hauteur;
+	private char[][] carte;
+	private Rockford rockford;
+	
+	
+	/*static Scanner in = new Scanner(System.in);	
 private String name;
 //private int caveDelay;
 public int CaveTime;
@@ -18,8 +37,8 @@ private int hauteur;
 private char[][] carte;
 private Rockford rockford;
 //private int[] tabdiamondsval;
-
-public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, int diamondValue, int amoebaTime, int magicWallTime, int largeur, int hauteur){
+*/
+/*public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, int diamondValue, int amoebaTime, int magicWallTime, int largeur, int hauteur){
 	this.name=name;
 	//this.caveDelay=caveDelay;
 	this.CaveTime=caveTime;
@@ -30,22 +49,50 @@ public Niveau(String name, int caveDelay, int caveTime, int diamondsRequired, in
 	this.largeur=largeur;
 	this.hauteur=hauteur;
 	carte= new char[this.largeur][this.hauteur] ;
-}
+}*/
+	public Niveau(String name, int caveDelay, int caveTime,
+			int diamondsRequired, int[] diamondValue, int amoebaTime,
+			int magicWallTime, int largeur, int hauteur) {
+		this.name = name;
+		// this.caveDelay=caveDelay;
+		this.CaveTime = caveTime;
+		this.diamondsRequired = diamondsRequired;
+		this.diamondValue = diamondValue;
+		this.amoebaTime = amoebaTime;
+		this.magicWallTime = magicWallTime;
+		this.largeur = largeur;
+		this.hauteur = hauteur;
+		carte = new char[this.largeur][this.hauteur];
+		this.rockford = new Rockford();
+	}
 
-
+/*
 public Niveau(){
 	this.name=" ";
 //	this.caveDelay=6;
 	this.CaveTime=0;
 	this.diamondsRequired=0;
-	this.diamondValue=0;
+	this.diamondValue=new int[] {0, 0};
 	this.amoebaTime=0;
 	this.magicWallTime=0;
 	this.largeur=0;
 	this.hauteur=0;
 	//carte= new char[this.largeur][this.hauteur] ;
 	//this.rockford=new Rockford();
-}
+}*/
+	public Niveau() {
+		this.name = " ";
+		// this.caveDelay=6;
+		this.CaveTime = 0;
+		this.diamondsRequired = 0;
+		this.diamondValue = new int[] { 0, 0 };
+		this.amoebaTime = 0;
+		this.magicWallTime = 0;
+		this.largeur = 0;
+		this.hauteur = 0;
+		carte = null;
+		this.rockford = new Rockford();
+	}
 
 /*public Niveau(){
 	this.name="Cave 1";
@@ -87,10 +134,10 @@ public int getDiamondsRequired() {
 public void setDiamondsRequired(int diamondsRequired) {
 	this.diamondsRequired = diamondsRequired;
 }
-public int getDiamondValue() {
+public int[] getDiamondValue() {
 	return diamondValue;
 }
-public void setDiamondValue(int diamondValue) {
+public void setDiamondValue(int [] diamondValue) {
 	this.diamondValue = diamondValue;
 }
 public int getAmoebaTime() {

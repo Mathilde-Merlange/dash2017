@@ -122,8 +122,8 @@ public class Fichier {
 								System.out.println(ligne);
 								v1=Integer.parseInt(st3.next());
 								v2=Integer.parseInt(st3.next());
-							n.setDiamondValue(v1+v2);
-							System.out.println(v1+v2);
+							n.setDiamondValue(new int[]{v1+v2});
+							System.out.println("oh"+v1+v2);
 								//n.ajouterDiamondValue(Integer.parseInt(st2.nextToken()));
 								//test
 								

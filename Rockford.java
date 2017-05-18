@@ -3,11 +3,16 @@ package bdProjet;
 import java.util.Random;
 
 public class Rockford {	
-public int nbdeplacement;
+/*public int nbdeplacement;
 public int[] listediamant;;
 public int nbdiamant;
 public int time;
-public Tableau tab1;
+public Tableau tab1;*/
+	private int nbdeplacement;
+	private int[] listediamant;;
+	private int nbdiamant;
+	private int time;
+	private Tableau tab1;
 //public Tableau tab1;
 
 public Rockford(){
@@ -26,6 +31,22 @@ public void setTime(int x){
 public void adddiamant(){
 	//ajouter diamant
 	nbdiamant++;
+}
+
+public int getNbdiamant() {
+	return nbdiamant;
+}
+
+public void setNbdiamant(int nbdiamant) {
+	this.nbdiamant = nbdiamant;
+}
+
+public int getNbdeplacement() {
+	return nbdeplacement;
+}
+
+public int getTime() {
+	return time;
 }
 
 public Rockford(int a, char [] [] tab){

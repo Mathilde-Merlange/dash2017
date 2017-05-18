@@ -214,7 +214,7 @@ public static void directif(Rockford rockford, Tableau Map){
 		Tableau depart= Map;
 		ArrayList chemin=new ArrayList();
 		Tableau suiv=depart;
-		while (rockford.time!=0){
+		while (rockford.getTime()!=0){
 			chemin.add(depart.depl);;
 		    char cible=cible_al(Map);
 		   // suiv=rockford.pluscourtchemin(cible,Map,suiv);
@@ -273,7 +273,7 @@ public static void simplet(Rockford rockford, Tableau Map,Niveau niv){
 		
 		
 		
-		while (rockford.time!=0){
+		while (rockford.getTime()!=0){
 		dp=0;
 		suiv=rockford.prochaindeplacementA(depart, depart.x, depart.y);//renvoi tableau du prochain deplacement
 		char contenusuiv=rockford.contenusuiv(suiv,suiv.x,suiv.y);
@@ -287,7 +287,7 @@ public static void simplet(Rockford rockford, Tableau Map,Niveau niv){
 		if(contenusuiv=='R'){
 			
 			dp=1;
-			rockford.setTime((rockford.time)+1);
+			rockford.setTime((rockford.getTime())+1);
 		}
 		
 		
@@ -379,9 +379,9 @@ public static void simplet(Rockford rockford, Tableau Map,Niveau niv){
 		chemin.add(depart.depl);; //prend tous les déplacements
 		}
 		
-		rockford.setTime((rockford.time)-1);
+		rockford.setTime((rockford.getTime())-1);
 		}
-		System.out.println(rockford.toString(nom,rockford.nbdiamant));
+		System.out.println(rockford.toString(nom,rockford.getNbdiamant()));
 		
 		}
 
