@@ -5,6 +5,21 @@ import java.util.*;
 
 public class Fichier {
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Enregistre un chemin dans un fichier
+	 * 
+	 * 
+	 * @param nomFichier
+	 *            nom du fichier où l'on veut enregistrer
+	 * 
+	 * @param moves
+	 *            chemin représenté par une liste de chiffres
+	 * 
+	 * 
+	 */
 	public static void enregistrer(String nomFichier, List moves)
 			throws IOException {
 		FileWriter fw = new FileWriter(nomFichier);
@@ -34,6 +49,22 @@ public class Fichier {
 		out.close();
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Enregistre un chemin dans un fichier
+	 * 
+	 * 
+	 * @param nomFichier
+	 *            nom du fichier où l'on veut enregistrer
+	 * 
+	 * @param moves
+	 *            chemin représenté par une liste de lettres
+	 * 
+	 * 
+	 */
+
 	public static void enregistrer2(String nomFichier, List moves)
 			throws IOException {
 		FileWriter fw = new FileWriter(nomFichier);
@@ -47,6 +78,20 @@ public class Fichier {
 		out.close();
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Lit le fichier BDCFF et enregistre les niveaux dans une liste
+	 * 
+	 * 
+	 * @param nomFichier
+	 *            nom du fichier BDCFF à lire
+	 * 
+	 * @return la liste des niveaux
+	 * 
+	 * 
+	 */
 	public static ArrayList lirefichier(String nomfichier)
 			throws FileNotFoundException {
 		String nt = "";
@@ -127,7 +172,7 @@ public class Fichier {
 							}
 
 							if (mot.equals("DiamondValue")) {
-								System.out.println("aff");
+								// System.out.println("aff");
 								// a deux val min il faut les additionner et les
 								// ajouter
 								// de.next();
@@ -144,7 +189,7 @@ public class Fichier {
 								v1 = Integer.parseInt(st3.next());
 								v2 = Integer.parseInt(st3.next());
 								n.setDiamondValue(new int[] { v1 + v2 });
-								System.out.println("oh" + v1 + v2);
+								// System.out.println("oh"+v1+v2);
 								// n.ajouterDiamondValue(Integer.parseInt(st2.nextToken()));
 								// test
 
@@ -187,10 +232,10 @@ public class Fichier {
 						}
 
 						if (ligne1.equals(ligne) && ligne2.equals(ligne)) {
-							System.out.println("t b");
+							// System.out.println("t b");
 							char[][] map = Fichier.lirecarte(sc1, sc2);
 							n.setCarte(map);
-							System.out.println("t b");
+							// System.out.println("t b");
 
 							for (int i = 0; i < map.length; i++) {
 								for (int j = 0; j < map[0].length; j++) {
@@ -209,7 +254,7 @@ public class Fichier {
 
 					niv.add(n);
 
-					System.out.println(niv.size());
+					// System.out.println(niv.size());
 
 					// System.out.print("ok");
 				}
@@ -223,6 +268,24 @@ public class Fichier {
 
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Enregistre la carte
+	 * 
+	 * 
+	 * @param sc
+	 *            scanner pour calculer la dimension de la carte
+	 * 
+	 * 
+	 * @param sc2
+	 *            scanner pour enregistrer la carte
+	 * 
+	 * @return la carte représentée par un tableau de char
+	 * 
+	 * 
+	 */
 	// $ commence les lignes optionnelles
 	public static char[][] lirecarte(Scanner sc, Scanner sc2) throws Exception {
 		int cpl = 0;
@@ -234,22 +297,9 @@ public class Fichier {
 		for (int i = 0; i < tab.length; i++) {
 			lettre.add(tab[i]);
 		}
-		/*
-		 * while(sc2.hasNextLine()){ ligne2=sc2.nextLine();
-		 * System.out.println(ligne2+"tttttttt"); }
-		 */
+
 		char[][] map;
-		/*
-		 * char[][] map=new char [5][40]; for(int i=0;i<5;i++){
-		 * //System.out.println("aaaa"+ligne+"bbbb"); for(int
-		 * j=0;j<ligne2.length();j++){ map[i][j]=ligne2.charAt(j); }
-		 * ligne2=sc2.nextLine(); System.out.println(ligne);
-		 * ligne=sc.nextLine();
-		 * 
-		 * }
-		 */
-		// if(ligne.equals("[map]")){
-		// ligne=sc.nextLine();
+
 		cpl = ligne.length();
 		while (!ligne.equals("[/map]") && sc.hasNextLine()) {
 
@@ -260,9 +310,6 @@ public class Fichier {
 		System.out.println("cph" + cph + " cpl" + cpl);
 		map = new char[cph][cpl];
 
-		// ligne2 = sc2.nextLine();
-		// System.out.print("lllllllllll"+ligne2+"l2l2l2l2");
-		// RAJOUTE LETTRE A LA CARTE ET D SI LETTRE INCONNUE.
 		for (int i = 0; i < cph; i++) {
 			for (int j = 0; j < cpl; j++) {
 				if (lettre.contains(ligne2.charAt(j))) {
@@ -275,25 +322,6 @@ public class Fichier {
 			// System.out.println("ccc"+ligne2);
 			ligne2 = sc2.nextLine();
 		}
-
-		/*
-		 * for (int i = 0; i < cph; i++) { for (int j = 0; j < cpl; j++) {
-		 * 
-		 * System.out.print(map[i][j]);
-		 * 
-		 * } System.out.println();
-		 * 
-		 * }
-		 */
-		// System.out.println("ddd"+ligne);
-		// Scanner sc1=new Scanner(ligne);
-		/*
-		 * if(sc2.hasNextLine()){ //System.out.print("test2");
-		 * //ligne=sc2.next(); System.out.println(ligne+"bbbb");}
-		 */
-
-		// return map;
-		// }
 
 		return map;
 	}

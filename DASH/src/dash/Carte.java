@@ -33,28 +33,28 @@ public class Carte {
 		// voisin du bas
 		if (grille[x + 1][y] != 'W' && grille[x + 1][y] != 'w'
 				&& grille[x + 1][y] != 'a' && grille[x + 1][y] != 'q') {
-			System.out.print("bas");
+
 			int[] tabv = { x + 1, y, 2 };
 			vois.add(tabv);
 		}
 		// voisin de droite
 		if (grille[x][y + 1] != 'W' && grille[x][y + 1] != 'w'
 				&& grille[x][y + 1] != 'a' && grille[x][y + 1] != 'q') {
-			System.out.print("droite");
+
 			int[] tabv = { x, y + 1, 6 };
 			vois.add(tabv);
 		}
 		// voisin du haut
 		if (grille[x - 1][y] != 'W' && grille[x - 1][y] != 'w'
 				&& grille[x - 1][y] != 'a' && grille[x - 1][y] != 'q') {
-			System.out.print("haut");
+
 			int[] tabv = { x - 1, y, 8 };
 			vois.add(tabv);
 		}
 		// voisin de gauche
 		if (grille[x][y - 1] != 'W' && grille[x][y - 1] != 'w'
 				&& grille[x][y - 1] != 'a' && grille[x][y - 1] != 'q') {
-			System.out.print("gauche");
+
 			int[] tabv = { x, y - 1, 4 };
 			vois.add(tabv);
 		}
@@ -151,10 +151,6 @@ public class Carte {
 		String s = "";
 
 		int rand = (int) (Math.random() * lesVois.size());
-		System.out.println("RAND" + rand);
-		for (int[] v : lesVois) {
-			System.out.println(v[0] + " " + v[1] + " " + v[2]);
-		}
 
 		int suiv = -1;
 		if (lesVois.size() > 0) {
@@ -185,7 +181,6 @@ public class Carte {
 					grille[vois[0]][vois[1]] = 'R';
 					// ajout diamand
 					n.getRockford().adddiamant();
-					System.out.println("suiv " + suiv);
 				}
 			} else {
 				if (grille[vois[0]][vois[1]] == '.') {
@@ -525,15 +520,10 @@ public class Carte {
 	 * @param n
 	 *            niveau
 	 * 
-	 * @param grille
-	 *            carte du niveau
 	 * 
-	 * @param chemin
-	 *            chemin parcouru
-	 * 
-	 * @return true si Rockford a atteint la sortie sinon false
+	 * @return le chemin parcouru par Rockford
 	 */
-	public static void evolue(Niveau n) throws IOException {
+	public static List evolue(Niveau n) throws IOException {
 		char[][] grille = n.getCarte();
 		int[] depart = depart(grille);
 		int[] sortie = sortie(n, grille);
@@ -553,19 +543,19 @@ public class Carte {
 				if (deplacer(n, grille, chemin)) {
 					break;
 				}
-				for (int k = 0; k < grille.length; k++) {
-					for (int j = 0; j < grille[0].length; j++) {
-						System.out.print(grille[k][j]);
-					}
-					System.out.println();
-				}
+				/*
+				 * for (int k = 0; k < grille.length; k++) { for (int j = 0; j <
+				 * grille[0].length; j++) { System.out.print(grille[k][j]); }
+				 * System.out.println(); }
+				 */
 			}
 			// on stocke les chemins
 			lestab.add(chemin);
 			chemin = (List) selection(lestab, n).get(0);
+			// Dash.aff(grille, n);
 
-			System.out.print("CHEMIN" + chemin);
 		}
+		return chemin;
 		/*
 		 * while(lestab.size()>1){ lestab=selection(lestab,n);
 		 * lestab=croisement(lestab,n); }
@@ -688,7 +678,7 @@ public class Carte {
 		}
 		map1[min[0]][min[1]].setAtteint(true);
 
-		System.out.print("MIN" + min[0] + " " + min[1] + "mAP"
+		System.out.println("MIN" + min[0] + " " + min[1] + " MAP"
 				+ map1[min[0]][min[1]].isAtteint() + " "
 				+ map1[min[0]][min[1]].getPoids());
 		return min;
@@ -768,6 +758,7 @@ public class Carte {
 		int[] sortie = sortie(niv, grille);
 		System.out.print(depart[0] + " " + depart[1]);
 		List<int[]> x = dijkstra(grille, depart);
+		Dash.aff(grille, niv);
 		for (int[] a : x) {
 			System.out.print(a.toString());
 		}

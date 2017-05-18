@@ -7,6 +7,20 @@ import java.util.ArrayList;
  */
 public class Move {
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Affiche les déplacements
+	 * 
+	 * 
+	 * @param moves
+	 *            chemin représenté par une liste de lettres
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public static void afficherM(ArrayList moves) {// ArrayList char MAJUSCULES
 		for (int ct = 0; ct < moves.size(); ct++) {
 			char e1 = (char) moves.get(ct);

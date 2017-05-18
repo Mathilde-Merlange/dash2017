@@ -7,6 +7,23 @@ import java.util.Random;
  */
 public class ia {
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Génère des déplacements aléatoires
+	 * 
+	 * 
+	 * @param nb
+	 *            nombre de déplacements que l'on veut générer
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @return un chemin aléatoire
+	 * 
+	 * 
+	 */
 	public static char[] randompath(int nb) {// déplacements aléatoires
 		char[] valeurs = { 'D', 'L', 'I', 'R', 'L' };
 		char[] moves = new char[nb];

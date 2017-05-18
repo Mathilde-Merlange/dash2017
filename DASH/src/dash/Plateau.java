@@ -12,6 +12,15 @@ public class Plateau {
 
 	static Scanner in = new Scanner(System.in);
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Prototype pour créer une carte et déplacer Rockford
+	 * 
+	 * 
+	 */
+	
 	public static void main(String[] args) {
 		char[][] grille = new char[7][7];
 		int taille = grille.length;
@@ -121,6 +130,13 @@ public class Plateau {
 
 	}// end main
 
+	
+	/**
+	 * 
+	 * Afficher la carte
+	 * 
+	 * 
+	 */
 	public static void afficher(char[][] grille, int taille) {
 		int a = 0;
 		while (a < taille) {

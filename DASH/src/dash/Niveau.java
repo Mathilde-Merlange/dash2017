@@ -23,6 +23,22 @@ public class Niveau {
 
 	// private int[] tabdiamondsval;
 
+	/**
+	 * 
+	 * Constructeur de Niveau
+	 * 
+	 * @param name
+	 * @param caveDelay
+	 * @param caveTime
+	 * @param diamondsRequired
+	 * @param diamondValue
+	 * @param amoebaTime
+	 * @param magicWallTime
+	 * @param largeur
+	 *            largeur de la carte
+	 * @param hauteur
+	 *            hauteur de la carte
+	 */
 	public Niveau(String name, int caveDelay, int caveTime,
 			int diamondsRequired, int[] diamondValue, int amoebaTime,
 			int magicWallTime, int largeur, int hauteur) {
@@ -143,6 +159,15 @@ public class Niveau {
 		name = n;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Prototype pour créer une carte et déplacer Rockford
+	 * 
+	 * 
+	 */
+	
 	public static void main(String[] args) {
 		char[][] grille = new char[7][7];
 		int taille = grille.length;
@@ -250,6 +275,12 @@ public class Niveau {
 
 	}// end main
 
+	/**
+	 * 
+	 * Afficher la carte
+	 * 
+	 * 
+	 */
 	public static void afficher(char[][] grille, int taille) {
 		int a = 0;
 		while (a < taille) {

@@ -16,14 +16,13 @@ public class args {
 		List che = new ArrayList();
 		File file = new File(nomfichier);
 		Scanner sc = new Scanner(file);
-		
 
 		try {
 			if (sc.hasNext()) {
 				String ligne = sc.next();
 				System.out.print(ligne);
 
-				for(int i=0;i<ligne.length();i++){
+				for (int i = 0; i < ligne.length(); i++) {
 					switch (ligne.charAt(i)) {
 					case 'D':
 						che.add(2);
@@ -41,7 +40,7 @@ public class args {
 						che.add(8);
 						break;
 					default:
-						
+
 					}
 				}
 			}
@@ -97,13 +96,13 @@ public class args {
 			Tableau tab = new Tableau();
 			String strategie = args[1];
 			String nomF2 = args[2];
-			 niv=Fichier.lirefichier(nomF2);
+			niv = Fichier.lirefichier(nomF2);
 			switch (strategie) {
 
 			case "-simplet":
 				num = args[4];
 				numniv = Integer.parseInt(num);
-				niveau = niv.get(numniv);
+				niveau = niv.get(numniv - 1);
 				rockford.setTime(niveau.getCaveTime());
 				tab2 = new Tableau(niveau.getCarte());
 				tab.simplet(rockford, tab2, niveau);
@@ -112,10 +111,10 @@ public class args {
 			case "-evolue":
 				num = args[4];
 				numniv = Integer.parseInt(num);
-				niveau = niv.get(numniv);
+				niveau = niv.get(numniv - 1);
 				rockford.setTime(niveau.getCaveTime());
 				try {
-					Carte.evolue(niveau);
+					Carte.evaluer(Carte.evolue(niveau), niveau);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -125,7 +124,7 @@ public class args {
 			case "-directif":
 				num = args[4];
 				numniv = Integer.parseInt(num);
-				niveau = niv.get(numniv);
+				niveau = niv.get(numniv - 1);
 				rockford.setTime(niveau.getCaveTime());
 				try {
 					dash.Carte.directif(niveau);
@@ -143,12 +142,12 @@ public class args {
 		case "-rejoue":
 			num = args[4];
 			numniv = Integer.parseInt(num);
-			System.out.println("num"+numniv);
+			System.out.println("num" + numniv);
 			String nomF3 = args[2];
-			 niv=Fichier.lirefichier(nomF3);
-			niveau = niv.get(numniv);
+			niv = Fichier.lirefichier(nomF3);
+			niveau = niv.get(numniv - 1);
 			String nomF4 = args[1];
-			che=lirechemin(nomF4);
+			che = lirechemin(nomF4);
 			Carte.evaluer(che, niveau);
 			break;
 		case "-simul":
@@ -181,11 +180,12 @@ public class args {
 	private static void afficherOptions() {
 		System.out.println("-name affiche les noms des codeurs");
 		System.out.println("-h affiche la liste des options du programme");
-		System.out.println("-lis");
-		System.out.println("-joue ");
-		System.out.println("-cal ");
-		System.out.println("-rejoue ");
-		System.out.println("-simul ");
+		System.out
+				.println("-lis li et affiche les parametres d'un fichier BDCFF");
+		System.out.println("-joue joue de maniere interactive ");
+		System.out.println("-cal joue avecc une strategie");
+		System.out.println("-rejoue rejoue une partie avec des déplacements");
+		System.out.println("-simul evalue deux strategies en parametre ");
 	}
 
 }

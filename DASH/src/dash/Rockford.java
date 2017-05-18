@@ -71,6 +71,12 @@ public class Rockford {
 		 */
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public Tableau prochaindeplacementA(Tableau dep, int x, int y) {
 		int limitx = dep.Map.length - 1;
 		int limity = dep.Map[0].length - 1;
