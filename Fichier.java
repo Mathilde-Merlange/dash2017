@@ -33,6 +33,18 @@ public class Fichier {
 		out.println(s);
 		out.close();
 }
+	public static void enregistrer2(String nomFichier, ArrayList moves)
+			throws IOException {
+		FileWriter fw = new FileWriter(nomFichier);
+		PrintWriter out = new PrintWriter(fw);
+		String s = "";
+		for (int i = 0; i < moves.size(); i++) {
+			s += moves.get(i);
+
+		}
+		out.println(s);
+		out.close();
+	}
 
 	public static ArrayList lirefichier(String nomfichier) throws FileNotFoundException{
 		String nt ="";
@@ -227,7 +239,7 @@ public class Fichier {
 			int cph = 0;
 			String ligne2 = sc2.nextLine();
 			String ligne1 = sc1.nextLine();
-			char[] tab={'R',' ','.','r','d','w','W','P','X'};
+			char[] tab={'R',' ','.','r','d','w','W','P','X','a','q'};
 	List lettre= new ArrayList();
 	for(int i=0;i<tab.length;i++){
 	lettre.add(tab[i]);

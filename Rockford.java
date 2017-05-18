@@ -1,5 +1,6 @@
 package bdProjet;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Rockford {	
@@ -81,7 +82,7 @@ public char contenuTab(Tableau tab,int x, int y){
 public Tableau prochaindeplacementA(Tableau dep,int x,int y){
 	int limitx=dep.Map.length-1;
 	int limity=dep.Map[0].length-1;
-	String nomdepl="";
+	String nomdepl="o";
 	// prochain deplacement aleatoire
 	
 	do{
@@ -136,7 +137,8 @@ public Tableau prochaindeplacementA(Tableau dep,int x,int y){
 	nomdepl="R";
 	}}
 	}while (x>=limitx||x<=0||y>=limity||y<=0);
-	dep.adddepl(nomdepl);
+	if(!nomdepl.equals("o")){
+	dep.adddepl(nomdepl);}
 	dep.x=x;
 	dep.y=y;
 	
@@ -167,16 +169,34 @@ public void setNbDiamant(int nbDiamant) {
 
 
 
-public String toString(String nom,int nbdiamant){
+public String toString(String nom,int nbdiamant, ArrayList chemin){
 System.out.println ("Fin de la partie");
 if (nom!="fin"){
 	System.out.println("Game over ("+nom+")");
 }
+
+System.out.println(chemin.get(chemin.size()-1));
+/*
+for(int i=0;i<chemin.size(); i++){
+	if (!chemin.get(i).equals(" ")){
+	System.out.println(chemin.get(i));
+	}
+	}*/
 return("Nombre de diamant:"+nbdiamant);
 
 }
 
 
+public static ArrayList<String> garderdpl(Tableau ch){
+	ArrayList<String> a=new ArrayList <String>();
+	for (int i=0; i<ch.depl.size();i++){
+		if (!ch.depl.get(i).equals(" ")||!ch.depl.get(i).equals(",")){
+			a.add(ch.depl.get(i));
+		}
+	}
+	
+	return a;
+}
 
 }
 //2,4,6,8 les déplacements

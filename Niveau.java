@@ -173,8 +173,19 @@ public void setRockford(Rockford rockford) {
 }
 
 
-public char[][] getCarte() {
+/*public char[][] getCarte() {
 	return carte;
+}*/
+
+public char[][] getCarte() {
+	char[][] grille = new char[carte.length][carte[0].length];
+	for (int k = 0; k < grille.length; k++) {
+		for (int j = 0; j < grille[0].length; j++) {
+			grille[k][j] = carte[k][j];
+		}
+		// System.out.println();
+	}
+	return grille;
 }
 
 public void setCarte(char[][] carte) {

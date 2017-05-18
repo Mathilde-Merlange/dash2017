@@ -376,12 +376,13 @@ public static void simplet(Rockford rockford, Tableau Map,Niveau niv){
 			}
 			System.out.println();
 			}
+		
 		chemin.add(depart.depl);; //prend tous les déplacements
 		}
 		
 		rockford.setTime((rockford.getTime())-1);
 		}
-		System.out.println(rockford.toString(nom,rockford.getNbdiamant()));
+		System.out.println(rockford.toString(nom,rockford.getNbdiamant(), chemin));
 		
 		}
 
@@ -443,6 +444,5 @@ public static String tomberRoc(Tableau Map){
 }
 
 //creer une methode qui permt d'afficher depl de Rockford avec chemin
-
 
 }
