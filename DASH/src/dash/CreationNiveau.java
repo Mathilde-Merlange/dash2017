@@ -1,4 +1,5 @@
 package dash;
+
 /**
  * Created by mathilde on 12/02/17.
  */
@@ -9,6 +10,14 @@ public class CreationNiveau {
 
 	static Scanner sc = new Scanner(System.in);
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Prototype pour créer un niveau
+	 * 
+	 * 
+	 */
 	public static void main(String[] args) {
 		System.out.println("Saisir le nombre de niveaux à créer");
 		int n = sc.nextInt();
@@ -37,7 +46,7 @@ public class CreationNiveau {
 			}
 
 		} catch (Exception e) {
-            System.out.println(e);
+			System.out.println(e);
 		}
 
 	}

@@ -9,29 +9,26 @@ public class Carte {
 	public static final int nbtab = 5;
 	public static final int infini = 1000;
 
-	
-
-/**
-
-*
-
-* la liste des voisins, un voisin est un tableau à 3 cases avec coordonnées x, y et déplacement
-
-* @param grille
-* carte du niveau
-* @param pos 
-* position de Rockford
-* 
-* @return liste des voisins où l'on peut se déplacer
-
-*/
+	/**
+	 * 
+	 * 
+	 * 
+	 * la liste des voisins, un voisin est un tableau à 3 cases avec coordonnées
+	 * x, y et déplacement
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * @param pos
+	 *            position de Rockford
+	 * 
+	 * @return liste des voisins où l'on peut se déplacer
+	 */
 	// les voisins où l'on peut se déplacer
 	public static List<int[]> voisins(char[][] grille, int[] pos) {
 		List<int[]> vois = new ArrayList<int[]>();
 		int x = pos[0];
 		int y = pos[1];
-		
-		
+
 		// char[][]grille=n.getCarte();
 		// voisin du bas
 		if (grille[x + 1][y] != 'W' && grille[x + 1][y] != 'w'
@@ -42,7 +39,7 @@ public class Carte {
 		}
 		// voisin de droite
 		if (grille[x][y + 1] != 'W' && grille[x][y + 1] != 'w'
-				&& grille[x][y + 1] != 'a' && grille[x][y+1] != 'q') {
+				&& grille[x][y + 1] != 'a' && grille[x][y + 1] != 'q') {
 			System.out.print("droite");
 			int[] tabv = { x, y + 1, 6 };
 			vois.add(tabv);
@@ -56,7 +53,7 @@ public class Carte {
 		}
 		// voisin de gauche
 		if (grille[x][y - 1] != 'W' && grille[x][y - 1] != 'w'
-				&& grille[x][y - 1] != 'a' && grille[x ][y-1] != 'q') {
+				&& grille[x][y - 1] != 'a' && grille[x][y - 1] != 'q') {
 			System.out.print("gauche");
 			int[] tabv = { x, y - 1, 4 };
 			vois.add(tabv);
@@ -66,22 +63,21 @@ public class Carte {
 		return vois.isEmpty() ? null : vois;
 
 	}
-	
+
 	/**
-
-	*
-
-	* la sortie quand Rockford a ramassé assez de diamants
-
-	* @param n 
-	* niveau
-	* 
-	* @param grille
-	* carte du niveau
-	* 
-	* @return position de la sortie sinon {-1,-1} si elle n'est pas apparue 
-
-	*/
+	 * 
+	 * 
+	 * 
+	 * la sortie quand Rockford a ramassé assez de diamants
+	 * 
+	 * @param n
+	 *            niveau
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * 
+	 * @return position de la sortie sinon {-1,-1} si elle n'est pas apparue
+	 */
 
 	// retourne la sortie qui apparait après le bon compte de diamand, sinon
 	// retourne tableau -1,-1
@@ -101,20 +97,17 @@ public class Carte {
 		return new int[] { -1, -1 };
 	}
 
-	
-	
 	/**
-
-	*
-
-	* la position de Rockford
-	*
-	* @param grille
-	* carte du niveau
-	* 
-	* @return position de Rockford sinon {-1,-1}
-
-	*/
+	 * 
+	 * 
+	 * 
+	 * la position de Rockford
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * 
+	 * @return position de Rockford sinon {-1,-1}
+	 */
 
 	// retourne le départ ou la case de Rockford si la partie a commencé sinon
 	// tableau -1,-1
@@ -133,23 +126,22 @@ public class Carte {
 	}
 
 	/**
-
-	*
-
-	* Déplace Rockford sur un voisin
-
-	* @param n 
-	* niveau
-	* 
-	* @param grille
-	* carte du niveau
-	* 
-	* @param chemin
-	* chemin parcouru
-	* 
-	* @return true si Rockford a atteint la sortie sinon false
-
-	*/
+	 * 
+	 * 
+	 * 
+	 * Déplace Rockford sur un voisin
+	 * 
+	 * @param n
+	 *            niveau
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * 
+	 * @param chemin
+	 *            chemin parcouru
+	 * 
+	 * @return true si Rockford a atteint la sortie sinon false
+	 */
 
 	public static boolean deplacer(Niveau n, char[][] grille, List chemin) {
 		// char[][]grille=n.getCarte();
@@ -210,11 +202,13 @@ public class Carte {
 					} else {
 						if (grille[vois[0]][vois[1]] == 'r') {
 							chemin.add(vois[2]);
-							Tableau map=new Tableau();
-							map.Map=grille;
+							Tableau map = new Tableau();
+							map.Map = grille;
 							Tableau.deplacerRoc(map, vois[0], vois[1]);
-							/*grille[depart[0]][depart[1]] = ' ';
-							grille[vois[0]][vois[1]] = 'R';*/
+							/*
+							 * grille[depart[0]][depart[1]] = ' ';
+							 * grille[vois[0]][vois[1]] = 'R';
+							 */
 						} else {
 							chemin.add(vois[2]);
 							grille[depart[0]][depart[1]] = ' ';
@@ -228,7 +222,18 @@ public class Carte {
 		//
 	}
 
-	// PAS FINI
+	/**
+	 * 
+	 * 
+	 * 
+	 * Croisements et mutations pour l'algorithme génétique (pas fini)
+	 * 
+	 * @param lestab
+	 *            liste des chemins
+	 * 
+	 * @param n
+	 *            niveau
+	 */
 	public static void croisement(List<List> lestab, Niveau n) {
 		int croi = lestab.size() / 2;
 		int nb = 0;
@@ -262,23 +267,21 @@ public class Carte {
 		}
 	}
 
-	
 	/**
-
-	*
-
-	* Sélectionne les meilleurs chemins
-
-	* @param lestab
-	* liste des chemins
-	* 
-	* @param n
-	*  niveau
-	* 
-	* 
-	* @return la liste des meilleurs chemins
-
-	*/
+	 * 
+	 * 
+	 * 
+	 * Sélectionne les meilleurs chemins (pas fini)
+	 * 
+	 * @param lestab
+	 *            liste des chemins
+	 * 
+	 * @param n
+	 *            niveau
+	 * 
+	 * 
+	 * @return un chemin gagnant s'il existe sinon un chemin pris aléatoirement
+	 */
 	public static List selection(List<List> lestab, Niveau n) {
 		int croi = lestab.size() / 2;
 		int nb = 0;
@@ -286,24 +289,40 @@ public class Carte {
 		List tab = new ArrayList();
 		// croisement
 		for (int i = 0; i < lestab.size(); i++) {
-			//si c gagné on le sélectionne
-			if (tab.size() < croi && evaluer(lestab.get(i),n)) {
+			// si c gagné on le sélectionne
+			if (tab.size() < croi && evaluer(lestab.get(i), n)) {
 				tab.add(lestab.remove(i));
 			}
 		}
-		/*while (tab.size() < croi) {
-			rand = (int) (Math.random() * lestab.size());
-			tab.add(lestab.remove(rand));
-		}*/
-		if(tab.isEmpty()){
+		/*
+		 * while (tab.size() < croi) { rand = (int) (Math.random() *
+		 * lestab.size()); tab.add(lestab.remove(rand)); }
+		 */
+		if (tab.isEmpty()) {
 			rand = (int) (Math.random() * lestab.size());
 			tab.add(lestab.remove(rand));
 		}
 		return tab;
 	}
 
-	
-	public static boolean evaluer(List chemin, Niveau  niv){
+	/**
+	 * 
+	 * 
+	 * 
+	 * Evalue un chemin et affiche le score
+	 * 
+	 * @param chemin
+	 *            chemin à évaluer
+	 * 
+	 * @param niv
+	 *            niveau
+	 * 
+	 * @param chemin
+	 *            chemin parcouru
+	 * 
+	 * @return true si Rockford a atteint la sortie sinon false
+	 */
+	public static boolean evaluer(List chemin, Niveau niv) {
 		boolean gagne = false;
 		boolean fini = false;
 		char[][] grille = niv.getCarte();
@@ -311,25 +330,20 @@ public class Carte {
 		int[] sor = Carte.sortie(niv, grille);
 		int x = dep[0];
 		int y = dep[1];
-		int i=0;
-		//int[]tabv=new int[3];
-		//List<int[]> chemin = new ArrayList();
-		System.out.println("cavetime"+niv.getCaveTime());
-		while (chemin.size() > i
-				&& !gagne && !fini) {
+		int i = 0;
+		// int[]tabv=new int[3];
+		// List<int[]> chemin = new ArrayList();
+		System.out.println("cavetime" + niv.getCaveTime());
+		while (chemin.size() > i && !gagne && !fini) {
 			dep = Carte.depart(grille);
 			x = dep[0];
 			y = dep[1];
 			Dash.aff(grille, niv);
-			System.out.println("jouer:");
-			System.out.println("Taper 8 pour haut");
-			System.out.println("Taper 2 pour bas");
-			System.out.println("Taper 6 pour droite");
-			System.out.println("Taper 4 pour gauche");
-			int c = (Integer)chemin.get(i);
+
+			int c = (Integer) chemin.get(i);
 			switch (c) {
 			case 5:
-			break;
+				break;
 			case 8:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
@@ -347,7 +361,7 @@ public class Carte {
 					if (grille[x - 1][y] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x, y)){
+						if (Tableau.deplacerRoc(tab, x, y)) {
 							niv.getRockford().seDeplacer();
 						}
 					} else {
@@ -356,7 +370,7 @@ public class Carte {
 						}
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
-					niv.getRockford().seDeplacer();
+						niv.getRockford().seDeplacer();
 					}
 
 				} else {
@@ -385,7 +399,7 @@ public class Carte {
 					if (grille[x + 1][y] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x+1, y)){
+						if (Tableau.deplacerRoc(tab, x + 1, y)) {
 							niv.getRockford().seDeplacer();
 						}
 					} else {
@@ -395,7 +409,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x + 1][y] = 'R';
 
-					niv.getRockford().seDeplacer();
+						niv.getRockford().seDeplacer();
 					}
 				} else {
 					if (grille[x + 1][y] == 'a' || grille[x + 1][y] == 'q') {
@@ -423,7 +437,7 @@ public class Carte {
 					if (grille[x][y + 1] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x, y)){
+						if (Tableau.deplacerRoc(tab, x, y)) {
 
 							niv.getRockford().seDeplacer();
 						}
@@ -434,7 +448,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x][y + 1] = 'R';
 
-					niv.getRockford().seDeplacer();
+						niv.getRockford().seDeplacer();
 					}
 				} else {
 					if (grille[x][y + 1] == 'a' || grille[x][y + 1] == 'q') {
@@ -462,7 +476,7 @@ public class Carte {
 					if (grille[x][y - 1] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x, y)){
+						if (Tableau.deplacerRoc(tab, x, y)) {
 
 							niv.getRockford().seDeplacer();
 						}
@@ -472,7 +486,7 @@ public class Carte {
 						}
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
-					niv.getRockford().seDeplacer();
+						niv.getRockford().seDeplacer();
 					}
 
 				} else {
@@ -487,34 +501,38 @@ public class Carte {
 			default:
 				System.out.println("mauvaise touche");
 			}
-i++;
+			i++;
 		}
 		Dash.aff(grille, niv);
-		System.out.println("gagne"+gagne);
-		System.out.println("fini"+fini);
-		if(gagne)
+		System.out.println("SCORE:" + niv.getRockford().getNbdiamant()
+				* niv.getDiamondValue()[0]);
+		if (gagne) {
+			System.out.println("GAGNE");
+		} else {
+			System.out.println("GAME OVER");
+		}
+		if (gagne)
 			return true;
 		return false;
 	}
 
 	/**
-
-	*
-
-	* Joueur évolué
-
-	* @param n 
-	* niveau
-	* 
-	* @param grille
-	* carte du niveau
-	* 
-	* @param chemin
-	* chemin parcouru
-	* 
-	* @return true si Rockford a atteint la sortie sinon false
-
-	*/
+	 * 
+	 * 
+	 * 
+	 * Joueur évolué
+	 * 
+	 * @param n
+	 *            niveau
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * 
+	 * @param chemin
+	 *            chemin parcouru
+	 * 
+	 * @return true si Rockford a atteint la sortie sinon false
+	 */
 	public static void evolue(Niveau n) throws IOException {
 		char[][] grille = n.getCarte();
 		int[] depart = depart(grille);
@@ -544,9 +562,9 @@ i++;
 			}
 			// on stocke les chemins
 			lestab.add(chemin);
-			chemin=(List) selection(lestab,n).get(0);
-			
-			System.out.print("CHEMIN"+chemin);
+			chemin = (List) selection(lestab, n).get(0);
+
+			System.out.print("CHEMIN" + chemin);
 		}
 		/*
 		 * while(lestab.size()>1){ lestab=selection(lestab,n);
@@ -554,6 +572,20 @@ i++;
 		 */
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Cherche une cible dans la carte
+	 * 
+	 * 
+	 * 
+	 * @param map
+	 *            carte du niveau
+	 * 
+	 * 
+	 * @return la cible
+	 */
 	public static char cible_al(char[][] map) {
 		// A modifier pour j
 		int c = 0;
@@ -573,6 +605,16 @@ i++;
 		return a;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Prototype d'un joueur évolué
+	 * 
+	 * @param niv
+	 *            niveau
+	 * 
+	 */
 	public static void evolue2(Niveau niv) throws IOException {
 		char[][] grille = niv.getCarte();
 		int[] depart = depart(grille);
@@ -615,17 +657,23 @@ i++;
 		}
 	}
 
-	public static void init(char[][] grille, int[] depart) {
-		Poidsatt[][] map1 = null;
-		Coupleint[][] pere = null;
-		for (int k = 0; k < grille.length; k++) {
-			for (int j = 0; j < grille[0].length; j++) {
-				map1[k][j] = new Poidsatt(-1, false);
-				pere[k][j] = new Coupleint(-1, -1);
-			}
-		}
-		map1[depart[0]][depart[1]] = new Poidsatt(0, false);
-	}
+	/**
+	 * 
+	 * 
+	 * 
+	 * Cherche la case non atteinte de plus petit poids et la passe à atteint
+	 * pour l'algorithme de Dijkstra
+	 * 
+	 * @param f
+	 *            liste des cases qu'il reste à parcourir
+	 * 
+	 * @param map1
+	 *            carte qui représente la distance entre le départ et chaque
+	 *            case et si elles ont déjà été parcourues
+	 * 
+	 * 
+	 * @return la case non atteinte de plus petit poids
+	 */
 
 	// return case non atteinte de plus petit poids passe à atteint
 	public static int[] extrairemin(List<int[]> f, Poidsatt[][] map1) {
@@ -640,10 +688,27 @@ i++;
 		}
 		map1[min[0]][min[1]].setAtteint(true);
 
-		System.out.print("MIN"+min[0]+" "+min[1]+"mAP"+map1[min[0]][min[1]].isAtteint()+" "+map1[min[0]][min[1]].getPoids());
+		System.out.print("MIN" + min[0] + " " + min[1] + "mAP"
+				+ map1[min[0]][min[1]].isAtteint() + " "
+				+ map1[min[0]][min[1]].getPoids());
 		return min;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Algorithme de Dijkstra qui donne les plus court chemin
+	 * 
+	 * @param grille
+	 *            carte du niveau
+	 * 
+	 * @param depart
+	 *            point de départ de Rockford
+	 * 
+	 * 
+	 * @return la liste des plus courts chemins entre le départ et chaque case
+	 */
 	// plus court chemin
 	public static List<int[]> dijkstra(char[][] grille, int[] depart) {
 		// init
@@ -671,11 +736,10 @@ i++;
 			int[] u = extrairemin(f, map1);
 			f.remove(u);
 			x.add(u);
-//ICIIIIIIIIII
-			//ICIIIIIIIIII	
-			//ICIIIIIIIIII
+			// problème ici
 			for (int[] v : voisins(grille, u)) {
-				// relacher, si le voisin pas atteint et poids fils > poids pere +1
+				// relacher, si le voisin pas atteint et poids fils > poids pere
+				// +1
 				if ((!map1[v[0]][v[1]].isAtteint())
 						&& (map1[v[0]][v[1]].getPoids() > map1[u[0]][u[1]]
 								.getPoids() + 1)) {
@@ -687,26 +751,26 @@ i++;
 		return x;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Joueur directif (ne fonctionne pas)
+	 * 
+	 * @param niv
+	 *            niveau
+	 * 
+	 * 
+	 */
 	public static void directif(Niveau niv) {
 		char[][] grille = niv.getCarte();
 		int[] depart = depart(grille);
 		int[] sortie = sortie(niv, grille);
-		System.out.print(depart[0]+" "+depart[1]);
+		System.out.print(depart[0] + " " + depart[1]);
 		List<int[]> x = dijkstra(grille, depart);
 		for (int[] a : x) {
 			System.out.print(a.toString());
 		}
 	}
-
-	/*
-	 * public static void evolue2(Niveau n) throws IOException{
-	 * char[][]grille=n.getCarte(); int[]depart=depart(n);
-	 * int[]sortie=sortie(n); List atteint=new ArrayList(); List prevchemin=new
-	 * ArrayList(); prevchemin.add(depart); List pile = new ArrayList(); Couple
-	 * co=new Couple(depart,prevchemin); pile.add(co); int[]u=new int[1]; List
-	 * chemin=new ArrayList(); List chem=new ArrayList();
-	 * 
-	 * }
-	 */
 
 }

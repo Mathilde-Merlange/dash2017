@@ -4,9 +4,9 @@ public class Coupleint {
 
 	private int x;
 	private int y;
-	
+
 	public Coupleint(int x, int y) {
-	
+
 		this.x = x;
 		this.y = y;
 	}
@@ -26,6 +26,5 @@ public class Coupleint {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	
+
 }

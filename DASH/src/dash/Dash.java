@@ -18,28 +18,20 @@ import java.util.*;
 
 public class Dash {
 
-	// private Diamant d;
-	// private Mur m;
-	// private Roc r;
-	private Strategie st;
-	// private Tableau tab=new Tableau();
-	private static List<Niveau> listeniv = new ArrayList<Niveau>();
-	// public static Rockford rockford;
-	private char[][] map;
-
-	// }
-	/*
-	 * public static char voisins(char [][] Map){ Map voisin; List<Map>
-	 * listevoisin= new ArrayList<Map>();
+	/**
 	 * 
-	 * int x; int y; for (x=0;x<Map.length;x++){ for (y=0; y<Map.length;y++){
 	 * 
-	 * if (Map[x+1][y]==' '|| Map[x+1][y]=='.' || Map[x+1][y]=='d' ){ voisin=
-	 * Map[x+1][y]; listevoisin.add(voisin); } if (Map[x-1][y]==' '||
-	 * Map[x-1][y]=='.' || Map[x-1][y]=='d' ){ voisin= Map[x-1][y]; } if
-	 * (Map[x][y+1]==' '|| Map[x][y+1]=='.' || Map[x][y+1]=='d' ){ voisin=
-	 * Map[x][y+1]; } if (Map[x][y-1]==' '|| Map[x][y-1]=='.' ||
-	 * Map[x][y-1]=='d' ){ voisin= Map[x][y-1]; } } } return voisin; }
+	 * 
+	 * Mode interactif qui affiche le score et demande d'enregistrer le chemin à
+	 * la fin de la partie au format .dash
+	 * 
+	 * 
+	 * @param niv
+	 *            niveau
+	 * 
+	 * 
+	 * 
+	 * @return le chemin parcouru par Rockford
 	 */
 	public static List<int[]> jouer(Niveau niv) {
 		Scanner s = new Scanner(System.in);
@@ -50,9 +42,9 @@ public class Dash {
 		int[] sor = Carte.sortie(niv, grille);
 		int x = dep[0];
 		int y = dep[1];
-		int[]tabv=new int[3];
+		int[] tabv = new int[3];
 		List chemin = new ArrayList();
-		System.out.println("cavetime"+niv.getCaveTime());
+		System.out.println("cavetime" + niv.getCaveTime());
 		while (niv.getCaveTime() > niv.getRockford().getNbdeplacement()
 				&& !gagne && !fini) {
 			dep = Carte.depart(grille);
@@ -67,8 +59,8 @@ public class Dash {
 			int c = s.nextInt();
 			switch (c) {
 			case 5:
-			chemin.add(5);
-			break;
+				chemin.add(5);
+				break;
 			case 8:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
 						.getNbdiamant()) {
@@ -87,7 +79,7 @@ public class Dash {
 					if (grille[x - 1][y] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x-1, y)){
+						if (Tableau.deplacerRoc(tab, x - 1, y)) {
 							chemin.add(8);
 							niv.getRockford().seDeplacer();
 						}
@@ -97,8 +89,8 @@ public class Dash {
 						}
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
-					chemin.add(8);
-					niv.getRockford().seDeplacer();
+						chemin.add(8);
+						niv.getRockford().seDeplacer();
 					}
 
 				} else {
@@ -129,7 +121,7 @@ public class Dash {
 					if (grille[x + 1][y] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x+1, y)){
+						if (Tableau.deplacerRoc(tab, x + 1, y)) {
 							chemin.add(2);
 							niv.getRockford().seDeplacer();
 						}
@@ -140,8 +132,8 @@ public class Dash {
 						grille[x][y] = ' ';
 						grille[x + 1][y] = 'R';
 
-					chemin.add(2);
-					niv.getRockford().seDeplacer();
+						chemin.add(2);
+						niv.getRockford().seDeplacer();
 					}
 				} else {
 					if (grille[x + 1][y] == 'a' || grille[x + 1][y] == 'q') {
@@ -171,7 +163,7 @@ public class Dash {
 					if (grille[x][y + 1] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x, y+1)){
+						if (Tableau.deplacerRoc(tab, x, y + 1)) {
 
 							chemin.add(6);
 							niv.getRockford().seDeplacer();
@@ -183,8 +175,8 @@ public class Dash {
 						grille[x][y] = ' ';
 						grille[x][y + 1] = 'R';
 
-					chemin.add(6);
-					niv.getRockford().seDeplacer();
+						chemin.add(6);
+						niv.getRockford().seDeplacer();
 					}
 				} else {
 					if (grille[x][y + 1] == 'a' || grille[x][y + 1] == 'q') {
@@ -214,7 +206,7 @@ public class Dash {
 					if (grille[x][y - 1] == 'r') {
 						Tableau tab = new Tableau();
 						tab.Map = grille;
-						if(Tableau.deplacerRoc(tab, x, y-1)){
+						if (Tableau.deplacerRoc(tab, x, y - 1)) {
 
 							chemin.add(4);
 							niv.getRockford().seDeplacer();
@@ -225,8 +217,8 @@ public class Dash {
 						}
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
-					chemin.add(4);
-					niv.getRockford().seDeplacer();
+						chemin.add(4);
+						niv.getRockford().seDeplacer();
 					}
 
 				} else {
@@ -245,26 +237,41 @@ public class Dash {
 
 		}
 		aff(grille, niv);
-		System.out.println("SCORE:"+niv.getRockford().getNbdiamant()*niv.getDiamondValue()[0]);
-		if(gagne){
-		System.out.println("GAGNE");}
-		else{
+		System.out.println("SCORE:" + niv.getRockford().getNbdiamant()
+				* niv.getDiamondValue()[0]);
+		if (gagne) {
+			System.out.println("GAGNE");
+		} else {
 			System.out.println("GAME OVER");
 		}
 		System.out.println("enregistrer: nom du fichier");
-		String fic=s.next();
+		String fic = s.next();
 		try {
-			Fichier.enregistrer(fic+".dash",chemin);
+			Fichier.enregistrer(fic + ".dash", chemin);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-return chemin;
+		return chemin;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * Affiche la carte du niveau
+	 * 
+	 * @param map
+	 *            carte du niveau
+	 * 
+	 * @param n
+	 *            niveau
+	 * 
+	 */
 	public static void aff(char[][] map, Niveau n) {
 		System.out.println("nombre de déplacements maximum:" + n.getCaveTime());
-		System.out.println("nombre de déplacements de Rockford:" + n.getRockford().getNbdeplacement());
+		System.out.println("nombre de déplacements de Rockford:"
+				+ n.getRockford().getNbdeplacement());
 		System.out.println("diamants requis:" + n.getDiamondsRequired());
 		System.out
 				.println("diamants obtenus:" + n.getRockford().getNbdiamant());
@@ -291,7 +298,7 @@ return chemin;
 	}
 
 	public static void main(String[] args) throws Exception {
-		
+
 		int z = 0;
 		Niveau niveau = new Niveau();
 		ArrayList<Niveau> niv = new ArrayList();
@@ -313,33 +320,26 @@ return chemin;
 		int a = s.nextInt();
 		switch (a) {
 		case 1:
-			int ch=1;
-			while(ch==1){
-			System.out.println("Choisir le numéro du niveau:");
-			z=s.nextInt();
-			while (z>niv.size()||z==0){
+			int ch = 1;
+			while (ch == 1) {
 				System.out.println("Choisir le numéro du niveau:");
-				z=s.nextInt();
+				z = s.nextInt();
+				while (z > niv.size() || z == 0) {
+					System.out.println("Choisir le numéro du niveau:");
+					z = s.nextInt();
+				}
+
+				// niv2=trierniv(niv);
+				niveau = niv.get(z - 1);
+				System.out.println(niv.get(z - 1).getName());
+
+				rockford.setTime(niveau.getCaveTime());
+				Tableau tab2 = new Tableau(niveau.getCarte());
+
+				tab.simplet(rockford, tab2, niveau);
+				System.out.println("Continuer ? 0=Non 1=Oui");
+				ch = s.nextInt();
 			}
-				
-				
-			
-				//niv2=trierniv(niv);
-				niveau=niv.get(z-1);
-					System.out.println(niv.get(z-1).getName());
-				
-				rockford.setTime (niveau.getCaveTime());
-				Tableau tab2=new Tableau(niveau.getCarte());
-				
-				
-				
-				
-				
-				
-				tab.simplet(rockford,tab2,niveau);
-			System.out.println("Continuer ? 0=Non 1=Oui");
-			ch=s.nextInt();
-	}
 
 			break;
 		case 2:
@@ -379,14 +379,15 @@ return chemin;
 				}
 				System.out.println();
 			}
-
-			dash.Carte.directif(niveau);
-
+			try {
+				dash.Carte.directif(niveau);
+			} catch (Exception e) {
+				System.out.print(e.getMessage());
+			}
 			break;
 		case 4:
 			jouer(niv.get(19));
-			
-			
+
 			break;
 		case 5:
 			break;
