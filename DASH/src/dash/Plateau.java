@@ -20,7 +20,7 @@ public class Plateau {
 	 * 
 	 * 
 	 */
-	
+
 	public static void main(String[] args) {
 		char[][] grille = new char[7][7];
 		int taille = grille.length;
@@ -130,10 +130,15 @@ public class Plateau {
 
 	}// end main
 
-	
 	/**
 	 * 
 	 * Afficher la carte
+	 * 
+	 * @param grille
+	 *            carte carrée
+	 * 
+	 * @param taille
+	 *            taille de la carte
 	 * 
 	 * 
 	 */

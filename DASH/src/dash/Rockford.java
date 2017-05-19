@@ -72,9 +72,19 @@ public class Rockford {
 	}
 
 	/**
+	 * Génère un déplacement aléatoire et l'ajoute au chemin parcouru
 	 * 
+	 * @param dep
+	 *            instance de la classe Tableau
 	 * 
+	 * @param x
+	 *            ordonnée de Rockford
 	 * 
+	 * @param y
+	 *            abscisse de Rockford
+	 * 
+	 * @return l'instance de Tableau modifiée avec la nouvelle position de
+	 *         Rockford et le nouveau chemin
 	 * 
 	 */
 	public Tableau prochaindeplacementA(Tableau dep, int x, int y) {
@@ -168,6 +178,18 @@ public class Rockford {
 		this.nbdiamant = nbDiamant;
 	}
 
+	/**
+	 * Affiche les informations en fin de partie
+	 * 
+	 * @param nom
+	 *            cause de la défaite
+	 * @param nbdiamant
+	 *            nombre de diamants obtenus
+	 * @param chemin
+	 *            chemin parcouru
+	 * 
+	 * @return le nombre de diamants
+	 */
 	public String toString(String nom, int nbdiamant, ArrayList chemin) {
 		System.out.println("Fin de la partie");
 		if (nom != "fin") {
@@ -179,10 +201,19 @@ public class Rockford {
 		 * for(int i=0;i<chemin.size(); i++){ if (!chemin.get(i).equals(" ")){
 		 * System.out.println(chemin.get(i)); } }
 		 */
-		return ("Nombre de diamant:" + nbdiamant);
+		return ("Nombre de diamants:" + nbdiamant);
 
 	}
 
+	
+	/**
+	 * Parcours de Rockford
+	 * 
+	 * @param ch
+	 * 	instance de la classe Tableau
+	 * 
+	 * @return le chemin parcouru par Rockford
+	 */
 	public static ArrayList<String> garderdpl(Tableau ch) {
 		ArrayList<String> a = new ArrayList<String>();
 		for (int i = 0; i < ch.depl.size(); i++) {

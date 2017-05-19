@@ -326,10 +326,11 @@ public class Carte {
 		int x = dep[0];
 		int y = dep[1];
 		int i = 0;
+		int j=0;
 		// int[]tabv=new int[3];
 		// List<int[]> chemin = new ArrayList();
 		System.out.println("cavetime" + niv.getCaveTime());
-		while (chemin.size() > i && !gagne && !fini) {
+		while (niv.getCaveTime() >i && chemin.size() > j && !gagne && !fini) {
 			dep = Carte.depart(grille);
 			x = dep[0];
 			y = dep[1];
@@ -346,6 +347,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 						gagne = true;
 					}
@@ -358,6 +360,7 @@ public class Carte {
 						tab.Map = grille;
 						if (Tableau.deplacerRoc(tab, x, y)) {
 							niv.getRockford().seDeplacer();
+							i++;
 						}
 					} else {
 						if (grille[x - 1][y] == 'd') {
@@ -366,6 +369,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 					}
 
 				} else {
@@ -373,6 +377,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x - 1][y] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 					}
 				}
@@ -384,6 +389,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x + 1][y] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 						gagne = true;
 					}
@@ -396,6 +402,7 @@ public class Carte {
 						tab.Map = grille;
 						if (Tableau.deplacerRoc(tab, x + 1, y)) {
 							niv.getRockford().seDeplacer();
+							i++;
 						}
 					} else {
 						if (grille[x + 1][y] == 'd') {
@@ -405,12 +412,14 @@ public class Carte {
 						grille[x + 1][y] = 'R';
 
 						niv.getRockford().seDeplacer();
+						i++;
 					}
 				} else {
 					if (grille[x + 1][y] == 'a' || grille[x + 1][y] == 'q') {
 						grille[x][y] = ' ';
 						grille[x + 1][y] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 					}
 				}
@@ -422,6 +431,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x][y + 1] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 						gagne = true;
 					}
@@ -435,6 +445,7 @@ public class Carte {
 						if (Tableau.deplacerRoc(tab, x, y)) {
 
 							niv.getRockford().seDeplacer();
+							i++;
 						}
 					} else {
 						if (grille[x][y + 1] == 'd') {
@@ -444,12 +455,14 @@ public class Carte {
 						grille[x][y + 1] = 'R';
 
 						niv.getRockford().seDeplacer();
+						i++;
 					}
 				} else {
 					if (grille[x][y + 1] == 'a' || grille[x][y + 1] == 'q') {
 						grille[x][y] = ' ';
 						grille[x][y + 1] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 					}
 				}
@@ -461,6 +474,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 						gagne = true;
 					}
@@ -474,6 +488,7 @@ public class Carte {
 						if (Tableau.deplacerRoc(tab, x, y)) {
 
 							niv.getRockford().seDeplacer();
+							i++;
 						}
 					} else {
 						if (grille[x][y - 1] == 'd') {
@@ -482,6 +497,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 					}
 
 				} else {
@@ -489,6 +505,7 @@ public class Carte {
 						grille[x][y] = ' ';
 						grille[x][y - 1] = 'R';
 						niv.getRockford().seDeplacer();
+						i++;
 						fini = true;
 					}
 				}
@@ -496,11 +513,12 @@ public class Carte {
 			default:
 				System.out.println("mauvaise touche");
 			}
-			i++;
+			j++;
 		}
 		Dash.aff(grille, niv);
 		System.out.println("SCORE:" + niv.getRockford().getNbdiamant()
 				* niv.getDiamondValue()[0]);
+		
 		if (gagne) {
 			System.out.println("GAGNE");
 		} else {

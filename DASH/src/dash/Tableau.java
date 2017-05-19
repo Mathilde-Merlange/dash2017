@@ -18,6 +18,12 @@ public class Tableau {
 		 */
 	}
 
+	/**
+	 * Constructeur de Tableau
+	 * 
+	 * @param map
+	 * 	carte du niveau
+	 */
 	public Tableau(char[][] map) {
 		this.Map = map;
 		for (int i = 0; i < map.length; i++) {
@@ -37,11 +43,25 @@ public class Tableau {
 		this.y = y;
 	}
 
+	/**
+	 * Ajoute le déplacement au chemin parcouru
+	 * 
+	 * @param d
+	 * 	déplacement ("U","D","R","L","I")
+	 */
 	public void adddepl(String d) {
 		// ajoute une direction dans la liste depl
 		depl.add(d);
 	}
 
+	/**
+	 * Cherche une cible dans la carte
+	 * 
+	 * @param Map
+	 * 	instance de la classe Tableau
+	 * 
+	 * @return la cible
+	 */
 	public static char cible_al(Tableau Map) {
 		// A modifier pour j
 		int c = 0;
@@ -62,6 +82,14 @@ public class Tableau {
 		return a;
 	}
 
+	/**
+	 * Place Rockford au point de départ à la place de P
+	 * 
+	 * @param tab
+	 * 	instance de la classe Tableau
+	 * 
+	 * @return l'instance de Tableau modifiée
+	 */
 	public static Tableau debuttab(Tableau tab) {
 
 		tab.Map[tab.x][tab.y] = 'R';
@@ -69,6 +97,13 @@ public class Tableau {
 		return tab;
 	}
 
+	/**
+	 * Déplace Rockford à la bonne place
+	 * @param tab
+	 * 		instance de la classe Tableau
+	 * 
+	 * @return l'instance de Tableau modifiée
+	 */
 	public static Tableau suitetab(Tableau tab) {
 		for (int i = 0; i < tab.Map.length; i++) {
 			for (int j = 0; j < tab.Map[0].length; j++) {
@@ -84,6 +119,20 @@ public class Tableau {
 		return tab;
 	}
 
+	/**
+	 * 
+	 * 
+	 * Joueur simplet
+	 * 
+	 * @param rockford
+	 * 	instance de Rockford
+	 * 
+	 * @param Map
+	 * 	instance de Tableau
+	 * 
+	 * @param niv
+	 * 	niveau
+	 */
 	public static void simplet(Rockford rockford, Tableau Map, Niveau niv) {
 		// strategie du simplet
 		int dp = 0;
@@ -216,6 +265,20 @@ public class Tableau {
 
 	}
 
+	/**
+	 * Déplace un roc
+	 * 
+	 * @param Map
+	 * instance de Tableau
+	 * 
+	 * @param x
+	 * 	ordonnée du roc
+	 * 
+	 * @param y
+	 * abscisse du roc
+	 * 
+	 * @return true si le roc a été déplacé sinon false
+	 */
 	public static boolean deplacerRoc(Tableau Map, int x, int y) {
 		// déplacement de Roc par Rockford
 		// x, y là ou il y a r
@@ -233,6 +296,15 @@ public class Tableau {
 
 	}
 
+	
+	/**
+	 * Fait tomber un roc et renvoie une chaine de caractères pour le joueur simplet
+	 * 
+	 * @param Map
+	 * 	instance de Tableau
+	 * 
+	 * @return "a" si le roc est tombé sinon "time"
+	 */
 	public static String tomberRoc(Tableau Map) {
 		// Quand Roc tombe
 		String a = "time";

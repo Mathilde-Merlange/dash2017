@@ -167,7 +167,7 @@ public class Niveau {
 	 * 
 	 * 
 	 */
-	
+
 	public static void main(String[] args) {
 		char[][] grille = new char[7][7];
 		int taille = grille.length;

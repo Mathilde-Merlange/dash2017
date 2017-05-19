@@ -59,6 +59,7 @@ public class args {
 		String num = "";
 		int numniv = 0;
 		Tableau tab2 = null;
+		Scanner s=new Scanner(System.in);
 		switch (a1) {
 		case "-name":
 			afficherIdentite();
@@ -106,6 +107,17 @@ public class args {
 				rockford.setTime(niveau.getCaveTime());
 				tab2 = new Tableau(niveau.getCarte());
 				tab.simplet(rockford, tab2, niveau);
+
+					
+					
+					System.out.println("enregistrer: nom du fichier");
+					String fic1 = s.next();
+					try {
+						Fichier.enregistrer2(fic1 + ".dash", tab2.depl);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				break;
 
 			case "-evolue":
@@ -114,7 +126,18 @@ public class args {
 				niveau = niv.get(numniv - 1);
 				rockford.setTime(niveau.getCaveTime());
 				try {
-					Carte.evaluer(Carte.evolue(niveau), niveau);
+					
+					che=Carte.evolue(niveau);
+					niveau.getRockford().setNbDiamant(0);
+					Carte.evaluer(che, niveau);
+					System.out.println("enregistrer: nom du fichier");
+					String fic = s.next();
+					try {
+						Fichier.enregistrer(fic + ".dash", che);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -181,9 +204,9 @@ public class args {
 		System.out.println("-name affiche les noms des codeurs");
 		System.out.println("-h affiche la liste des options du programme");
 		System.out
-				.println("-lis li et affiche les parametres d'un fichier BDCFF");
+				.println("-lis lit et affiche les parametres d'un fichier BDCFF");
 		System.out.println("-joue joue de maniere interactive ");
-		System.out.println("-cal joue avecc une strategie");
+		System.out.println("-cal joue avec une strategie");
 		System.out.println("-rejoue rejoue une partie avec des déplacements");
 		System.out.println("-simul evalue deux strategies en parametre ");
 	}
