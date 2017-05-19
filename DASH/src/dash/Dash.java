@@ -19,7 +19,20 @@ import java.util.*;
  * Cette classe contient des fonctions pour le mode interactif.
  */
 public class Dash {
-
+	//faire réapparaitre la sortie
+public static void sortie(char[][] grille2, char[][] grille) {
+			// char[][]grille=n.getCarte();
+			int[] tabv=new int[]{0,0};
+				for (int i = 0; i < grille2.length; i++) {
+					for (int j = 0; j < grille2[0].length; j++) {
+						if (grille2[i][j] == 'X') {
+							grille[i][j]= 'X';
+							
+						}
+					}
+				}
+			
+		}
 	/**
 	 * 
 	 * 
@@ -36,10 +49,13 @@ public class Dash {
 	 * @return le chemin parcouru par Rockford
 	 */
 	public static List<int[]> jouer(Niveau niv) {
+		
+		
 		Scanner s = new Scanner(System.in);
 		boolean gagne = false;
 		boolean fini = false;
 		char[][] grille = niv.getCarte();
+		char[][] grille2 = niv.getCarte();
 		int[] dep = Carte.depart(grille);
 		int[] sor = Carte.sortie(niv, grille);
 		int x = dep[0];
@@ -75,6 +91,7 @@ public class Dash {
 						gagne = true;
 					}
 				}
+				
 				if (grille[x - 1][y] != 'W' && grille[x - 1][y] != 'w'
 						&& grille[x - 1][y] != 'a' && grille[x - 1][y] != 'q') {
 
@@ -104,6 +121,9 @@ public class Dash {
 						fini = true;
 					}
 				}
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					sortie(grille2, grille);}
 				break;
 			case 2:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
@@ -146,6 +166,9 @@ public class Dash {
 						fini = true;
 					}
 				}
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					sortie(grille2, grille);}
 				break;
 			case 6:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
@@ -189,6 +212,9 @@ public class Dash {
 						fini = true;
 					}
 				}
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					sortie(grille2, grille);}
 				break;
 			case 4:
 				if (niv.getDiamondsRequired() <= niv.getRockford()
@@ -232,6 +258,9 @@ public class Dash {
 						fini = true;
 					}
 				}
+				if (niv.getDiamondsRequired() <= niv.getRockford()
+						.getNbdiamant()) {
+					sortie(grille2, grille);}
 				break;
 			default:
 				System.out.println("mauvaise touche");
