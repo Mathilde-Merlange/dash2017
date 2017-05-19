@@ -80,10 +80,10 @@ public class args {
 		case "-joue":
 			String nomF1 = args[1];
 			niv = Fichier.lirefichier(nomF1);
-			if (args.length == 4) {
+
+			if (args.length >= 4) {
 				String a = args[3];
 				int b = Integer.parseInt(a);
-
 				Dash.jouer(niv.get(b - 1));
 			} else {
 				int lim = 0;
