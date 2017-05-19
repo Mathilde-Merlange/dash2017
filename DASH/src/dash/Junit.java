@@ -7,8 +7,17 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * 
+ * Classe des tests unitaires
+ * 
+ */
 public class Junit {
 
+	/**
+	 * Fonction qui teste la fonction voisins(char[][] grille, int[] pos) dans
+	 * Carte.
+	 */
 	@Test
 	public void testvoisins() {
 		Carte c = new Carte();

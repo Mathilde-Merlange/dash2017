@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Contient le main.
+ */
 public class args {
 	public static List lirechemin(String nomfichier)
 			throws FileNotFoundException {

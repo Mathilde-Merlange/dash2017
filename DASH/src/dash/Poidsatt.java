@@ -1,5 +1,11 @@
 package dash;
 
+/**
+ * 
+ * Classe pour donner le poids d’une position et dire si elle est atteinte dans
+ * l’algorithme de dijkstra.
+ * 
+ */
 public class Poidsatt {
 
 	private int poids;

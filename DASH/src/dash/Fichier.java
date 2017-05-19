@@ -3,6 +3,11 @@ package dash;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 
+ * Contient les fonctions qui lient les fichiers, fait les enregistrements.
+ * 
+ */
 public class Fichier {
 
 	/**

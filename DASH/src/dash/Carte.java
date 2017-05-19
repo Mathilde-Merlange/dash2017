@@ -3,7 +3,9 @@ package dash;
 import java.io.IOException;
 import java.util.*;
 
-//import dash1.Niveau1;
+/**
+ * Contient les fonctions qui servent pour des stratégies.
+ */
 
 public class Carte {
 	public static final int nbtab = 5;

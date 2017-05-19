@@ -1,11 +1,11 @@
 package dash;
 
-/**
- * Created by mathilde on 12/02/17.
- */
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Permet de créer un niveau.
+ */
 public class CreationNiveau {
 
 	static Scanner sc = new Scanner(System.in);

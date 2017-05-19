@@ -2,6 +2,9 @@ package dash;
 
 import java.util.*;
 
+/**
+ * Couple d’une position et du chemin précédent, pour le parcours en profondeur.
+ */
 public class Couple {
 	private int[] depart;
 	private List chemin;
@@ -21,6 +24,7 @@ public class Couple {
 	public void setChemin(List chemin) {
 		this.chemin = chemin;
 	}
+
 	/**
 	 * 
 	 * Constructeur de Couple pour évolué2 (parcours en profondeur)
@@ -28,7 +32,7 @@ public class Couple {
 	 * @param depart
 	 *            position actuelle
 	 * @param prevchemin
-	 *            chemin precedent
+	 *            chemin précédent
 	 */
 	public Couple(int[] depart, List prevchemin) {
 		this.depart = depart;

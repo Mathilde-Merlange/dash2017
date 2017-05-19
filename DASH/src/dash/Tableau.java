@@ -3,6 +3,11 @@ package dash;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 
+ * Contient des stratégies.
+ * 
+ */
 public class Tableau {
 	public char[][] Map = new char[8][7];
 	public int x;
@@ -67,7 +72,7 @@ public class Tableau {
 		int c = 0;
 		char a = ' ';
 		for (int i = 0; i < Map.Map.length; i++) {
-			for (int j = 0; j < Map.Map.length; j++) {
+			for (int j = 0; j < Map.Map[0].length; j++) {
 				c = c + 1;
 				Random r = new Random();
 				int elt = Map.Map.length * Map.Map.length;// ts les elt du

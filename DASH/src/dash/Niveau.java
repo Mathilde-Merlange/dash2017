@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 import dash.Rockford;
 
+/**
+ * 
+ * Permet d'enregistrer un niveau.
+ * 
+ */
 public class Niveau {
 	// Faire des arraylist
 	static Scanner in = new Scanner(System.in);

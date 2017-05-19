@@ -3,7 +3,7 @@ package dash;
 import java.util.Random;
 
 /**
- * Created by mathilde on 28/03/17.
+ * Classe pour des déplacements aléatoires.
  */
 public class ia {
 

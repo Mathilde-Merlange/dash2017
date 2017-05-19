@@ -6,7 +6,7 @@ import java.util.Scanner;
 import static dash.ia.randompath;
 
 /**
- * Created by mathilde on 07/03/17.
+ * Classe pour déplacer Rockford et afficher la carte.
  */
 public class Plateau {
 

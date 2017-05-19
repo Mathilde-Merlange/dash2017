@@ -1,5 +1,10 @@
 package dash;
 
+/**
+ * 
+ * Couple d’abscisse et d’ordonnée pour l’algorithme de dijkstra.
+ * 
+ */
 public class Coupleint {
 
 	private int x;

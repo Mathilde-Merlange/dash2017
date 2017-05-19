@@ -3,6 +3,11 @@ package dash;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * 
+ * Contient les fonctions liées à Rockford tel que ses déplacements.
+ * 
+ */
 public class Rockford {
 	private int nbdeplacement;
 	private int[] listediamant;;

@@ -3,7 +3,7 @@ package dash;
 import java.util.ArrayList;
 
 /**
- * Created by mathilde on 11/04/17.
+ * Utilisé pour le déplacement interactif.
  */
 public class Move {
 
