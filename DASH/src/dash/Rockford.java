@@ -205,12 +205,11 @@ public class Rockford {
 
 	}
 
-	
 	/**
 	 * Parcours de Rockford
 	 * 
 	 * @param ch
-	 * 	instance de la classe Tableau
+	 *            instance de la classe Tableau
 	 * 
 	 * @return le chemin parcouru par Rockford
 	 */

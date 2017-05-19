@@ -86,7 +86,7 @@ public class Carte {
 		int[] tabv;
 		if (n.getDiamondsRequired() == n.getRockford().getNbDiamand()) {
 			for (int i = 0; i < grille.length; i++) {
-				for (int j = 0; j < grille.length; j++) {
+				for (int j = 0; j < grille[0].length; j++) {
 					if (grille[i][j] == 'X') {
 						tabv = new int[] { i, j };
 						return tabv;
@@ -326,11 +326,11 @@ public class Carte {
 		int x = dep[0];
 		int y = dep[1];
 		int i = 0;
-		int j=0;
+		int j = 0;
 		// int[]tabv=new int[3];
 		// List<int[]> chemin = new ArrayList();
 		System.out.println("cavetime" + niv.getCaveTime());
-		while (niv.getCaveTime() >i && chemin.size() > j && !gagne && !fini) {
+		while (niv.getCaveTime() > i && chemin.size() > j && !gagne && !fini) {
 			dep = Carte.depart(grille);
 			x = dep[0];
 			y = dep[1];
@@ -518,7 +518,7 @@ public class Carte {
 		Dash.aff(grille, niv);
 		System.out.println("SCORE:" + niv.getRockford().getNbdiamant()
 				* niv.getDiamondValue()[0]);
-		
+
 		if (gagne) {
 			System.out.println("GAGNE");
 		} else {

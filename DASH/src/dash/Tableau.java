@@ -22,7 +22,7 @@ public class Tableau {
 	 * Constructeur de Tableau
 	 * 
 	 * @param map
-	 * 	carte du niveau
+	 *            carte du niveau
 	 */
 	public Tableau(char[][] map) {
 		this.Map = map;
@@ -47,7 +47,7 @@ public class Tableau {
 	 * Ajoute le déplacement au chemin parcouru
 	 * 
 	 * @param d
-	 * 	déplacement ("U","D","R","L","I")
+	 *            déplacement ("U","D","R","L","I")
 	 */
 	public void adddepl(String d) {
 		// ajoute une direction dans la liste depl
@@ -58,7 +58,7 @@ public class Tableau {
 	 * Cherche une cible dans la carte
 	 * 
 	 * @param Map
-	 * 	instance de la classe Tableau
+	 *            instance de la classe Tableau
 	 * 
 	 * @return la cible
 	 */
@@ -86,7 +86,7 @@ public class Tableau {
 	 * Place Rockford au point de départ à la place de P
 	 * 
 	 * @param tab
-	 * 	instance de la classe Tableau
+	 *            instance de la classe Tableau
 	 * 
 	 * @return l'instance de Tableau modifiée
 	 */
@@ -99,8 +99,9 @@ public class Tableau {
 
 	/**
 	 * Déplace Rockford à la bonne place
+	 * 
 	 * @param tab
-	 * 		instance de la classe Tableau
+	 *            instance de la classe Tableau
 	 * 
 	 * @return l'instance de Tableau modifiée
 	 */
@@ -125,13 +126,13 @@ public class Tableau {
 	 * Joueur simplet
 	 * 
 	 * @param rockford
-	 * 	instance de Rockford
+	 *            instance de Rockford
 	 * 
 	 * @param Map
-	 * 	instance de Tableau
+	 *            instance de Tableau
 	 * 
 	 * @param niv
-	 * 	niveau
+	 *            niveau
 	 */
 	public static void simplet(Rockford rockford, Tableau Map, Niveau niv) {
 		// strategie du simplet
@@ -269,13 +270,13 @@ public class Tableau {
 	 * Déplace un roc
 	 * 
 	 * @param Map
-	 * instance de Tableau
+	 *            instance de Tableau
 	 * 
 	 * @param x
-	 * 	ordonnée du roc
+	 *            ordonnée du roc
 	 * 
 	 * @param y
-	 * abscisse du roc
+	 *            abscisse du roc
 	 * 
 	 * @return true si le roc a été déplacé sinon false
 	 */
@@ -296,12 +297,12 @@ public class Tableau {
 
 	}
 
-	
 	/**
-	 * Fait tomber un roc et renvoie une chaine de caractères pour le joueur simplet
+	 * Fait tomber un roc et renvoie une chaine de caractères pour le joueur
+	 * simplet
 	 * 
 	 * @param Map
-	 * 	instance de Tableau
+	 *            instance de Tableau
 	 * 
 	 * @return "a" si le roc est tombé sinon "time"
 	 */

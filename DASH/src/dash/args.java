@@ -59,7 +59,7 @@ public class args {
 		String num = "";
 		int numniv = 0;
 		Tableau tab2 = null;
-		Scanner s=new Scanner(System.in);
+		Scanner s = new Scanner(System.in);
 		switch (a1) {
 		case "-name":
 			afficherIdentite();
@@ -108,16 +108,14 @@ public class args {
 				tab2 = new Tableau(niveau.getCarte());
 				tab.simplet(rockford, tab2, niveau);
 
-					
-					
-					System.out.println("enregistrer: nom du fichier");
-					String fic1 = s.next();
-					try {
-						Fichier.enregistrer2(fic1 + ".dash", tab2.depl);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				System.out.println("enregistrer: nom du fichier");
+				String fic1 = s.next();
+				try {
+					Fichier.enregistrer2(fic1 + ".dash", tab2.depl);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 
 			case "-evolue":
@@ -126,8 +124,8 @@ public class args {
 				niveau = niv.get(numniv - 1);
 				rockford.setTime(niveau.getCaveTime());
 				try {
-					
-					che=Carte.evolue(niveau);
+
+					che = Carte.evolue(niveau);
 					niveau.getRockford().setNbDiamant(0);
 					Carte.evaluer(che, niveau);
 					System.out.println("enregistrer: nom du fichier");
