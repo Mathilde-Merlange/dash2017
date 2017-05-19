@@ -186,11 +186,11 @@ public class Fichier {
 										.useDelimiter("=");
 								// StringTokenizer st2 = new
 								// StringTokenizer(ligne," ",false);
-								System.out.println(st2.next());
+								st2.next();
 								ligne = st2.next();
 								Scanner st3 = new Scanner(ligne)
 										.useDelimiter(" ");
-								System.out.println(ligne);
+								//System.out.println(ligne);
 								v1 = Integer.parseInt(st3.next());
 								v2 = Integer.parseInt(st3.next());
 								n.setDiamondValue(new int[] { v1 + v2 });
