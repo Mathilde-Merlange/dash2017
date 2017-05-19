@@ -395,10 +395,12 @@ public static boolean deplacerRoc(Tableau Map,int x, int y){
 	if (Map.Map[x][y+1]==' '&& Map.Map[x][y-1]=='R'){
 		Map.Map[x][y]='R';
 		Map.Map[x][y+1]='r';
+		Map.Map[x][y-1]=' ';
 	return true;
 	}else if (Map.Map[x][y-1]==' '&&Map.Map[x][y+1]=='R'){
 		Map.Map[x][y]='R';
 		Map.Map[x][y-1]='r';
+		Map.Map[x][y-1]=' ';
 	return true;
 	}
 	
@@ -409,12 +411,16 @@ public static boolean deplacerRoc(Tableau Map,int x, int y){
 	
 public static String tomberRoc(Tableau Map){
 // Quand Roc tombe
+	int z=0;
+	int w=0;
 	String a="time";
 	for (int x=0;x<Map.Map.length; x ++){
 	for (int y=0;y<Map.Map[0].length; y ++){	
+		z=x;
+		w=y;
 		if (Map.Map [x] [y]=='r'){
-		
-		if(Map.Map[x][y+1]==' '&&Map.Map[x+1][y+1]==' '){
+			//z=x;
+		if(Map.Map[x][y+1]==' '&&Map.Map[x+1][y+1]==' '&&Map.Map[x+1][y]=='r'){
 			Map.Map[x][y]=' ';
 			Map.Map[x+1][y+1]='r';
 			if(Map.Map[x+2][y+1]=='R'){
@@ -422,21 +428,26 @@ public static String tomberRoc(Tableau Map){
 			}
 		}
 		
-		if(Map.Map[x][y-1]==' '&&Map.Map[x+1][y-1]==' '){
+		if(Map.Map[x][y-1]==' '&&Map.Map[x+1][y-1]==' '&&Map.Map[x+1][y]=='r'){
 			Map.Map[x][y]=' ';
 			Map.Map[x+1][y-1]='r';
 			if(Map.Map[x+2][y-1]=='R'){
 				a="G";
 			}
 		}
+		
+
 		while (Map.Map[x+1][y]==' '){
+			Map.Map[z][w]=' ';
 			Map.Map[x+1][y]='r';
-			x=x+1;
-			if(Map.Map[x][y+1]=='R'){
+			
+			if(Map.Map[x+2][y]=='R'){
 				a="G";
 			}
+			x=x+1;
 		}
-		
+	
+		//x=z;
 		}
 	}
 }
